@@ -20,7 +20,7 @@
         <TextBox x:Name="AddMakerNameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,261,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="348" FontSize="14"/>
         <Button x:Name="AddColorNameButton" Content="DODAJ PRZĘDZĘ" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,149,0,0" VerticalAlignment="Top" Width="348" FontSize="14"/>
         <Button x:Name="AddMakerNameButton" Content="DODAJ PRODUCENTA" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,311,0,0" VerticalAlignment="Top" Width="348" FontSize="14"/>
-        <Button x:Name="bACKtOmAINmENUbUTTON" Content="WRÓC DO GŁÓWNEGO PANELU" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,483,0,0" VerticalAlignment="Top" Width="348" FontSize="14"/>
-        <Button x:Name="TextillListExitProgramButton" Content="ZAKOŃCZ PROGRAM" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,531,0,0" VerticalAlignment="Top" Width="348" FontSize="14"/>
+        <Button x:Name="BackToMainMenuButton" Content="WRÓC DO GŁÓWNEGO PANELU" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,483,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="BackToMainMenuButton_Click"/>
+        <Button x:Name="TextillListExitProgramButton" Content="ZAKOŃCZ PROGRAM" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,531,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="TextillListExitProgramButton_Click"/>
     </Grid>
 </Window>

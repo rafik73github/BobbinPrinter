@@ -24,6 +24,16 @@ namespace BobbinPrinter
             InitializeComponent();
         }
 
-       
+        private void TextillListExitProgramButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void BackToMainMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mW = new MainWindow();
+            this.Hide();
+            mW.Show();
+        }
     }
 }

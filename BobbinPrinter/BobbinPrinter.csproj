@@ -58,6 +58,8 @@
     <Compile Include="TextillList.xaml.cs">
       <DependentUpon>TextillList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Textills.cs" />
+    <Compile Include="XMLTools.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

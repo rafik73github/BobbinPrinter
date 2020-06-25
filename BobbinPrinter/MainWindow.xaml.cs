@@ -20,6 +20,7 @@ namespace BobbinPrinter
     /// </summary>
     public partial class MainWindow : Window
     {
+        XMLTools xmlTools = new XMLTools();
         public MainWindow()
         {
             InitializeComponent();
@@ -27,12 +28,14 @@ namespace BobbinPrinter
 
         private void AddPrintButton_Click(object sender, RoutedEventArgs e)
         {
-
+            xmlTools.XMLchange();
         }
 
         private void TextillListButton_Click(object sender, RoutedEventArgs e)
         {
-
+            TextillList tL = new TextillList();
+            this.Hide();
+            tL.Show();
         }
 
         private void MainMenuExitButton_Click(object sender, RoutedEventArgs e)
