@@ -1,0 +1,26 @@
+﻿<Window x:Class="BobbinPrinter.TextillList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BobbinPrinter"
+        mc:Ignorable="d"
+        Title="TextillList" Height="640" Width="800">
+    <Grid Width="792" Margin="0" Height="609" VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="397*"/>
+            <ColumnDefinition Width="395*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="SelectTextillTypeComboBox" HorizontalAlignment="Center" Height="24" Margin="0,61,0,0" VerticalAlignment="Top" Width="345"/>
+        <Label x:Name="label" Content="LISTA PRZĘDZ" HorizontalAlignment="Left" Height="30" Margin="26,26,0,0" VerticalAlignment="Top" Width="345" FontSize="16" HorizontalContentAlignment="Center"/>
+        <Label x:Name="AddTextillLabel" Content="DODAWANIE PRZĘDZ" HorizontalAlignment="Center" Height="30" Margin="0,26,0,0" VerticalAlignment="Top" Width="256" Grid.Column="1" FontSize="16" HorizontalContentAlignment="Center"/>
+        <ComboBox x:Name="SelectTextillMakerComboBox" HorizontalAlignment="Center" Height="24" Margin="0,62,0,0" VerticalAlignment="Top" Width="348" Grid.Column="1"/>
+        <TextBox x:Name="AddColorNameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,105,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="348" FontSize="14"/>
+        <Label x:Name="AddMakerLabel" Content="DODAWANIE PRODUCENTA I TYPU PRZĘDZY" HorizontalAlignment="Center" Height="30" Margin="0,211,0,0" VerticalAlignment="Top" Width="348" Grid.Column="1" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Panel.ZIndex="5"/>
+        <TextBox x:Name="AddMakerNameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,261,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="348" FontSize="14"/>
+        <Button x:Name="AddColorNameButton" Content="DODAJ PRZĘDZĘ" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,149,0,0" VerticalAlignment="Top" Width="348" FontSize="14"/>
+        <Button x:Name="AddMakerNameButton" Content="DODAJ PRODUCENTA" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,311,0,0" VerticalAlignment="Top" Width="348" FontSize="14"/>
+        <Button x:Name="bACKtOmAINmENUbUTTON" Content="WRÓC DO GŁÓWNEGO PANELU" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,483,0,0" VerticalAlignment="Top" Width="348" FontSize="14"/>
+        <Button x:Name="TextillListExitProgramButton" Content="ZAKOŃCZ PROGRAM" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,531,0,0" VerticalAlignment="Top" Width="348" FontSize="14"/>
+    </Grid>
+</Window>
