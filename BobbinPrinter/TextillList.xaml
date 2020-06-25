@@ -11,10 +11,10 @@
             <ColumnDefinition Width="397*"/>
             <ColumnDefinition Width="395*"/>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="SelectTextillTypeComboBox" HorizontalAlignment="Center" Height="24" Margin="0,61,0,0" VerticalAlignment="Top" Width="345"/>
+        <ComboBox x:Name="SelectTextillTypeComboBox" HorizontalAlignment="Center" Height="30" Margin="0,61,0,0" VerticalAlignment="Top" Width="345"/>
         <Label x:Name="label" Content="LISTA PRZĘDZ" HorizontalAlignment="Left" Height="30" Margin="26,26,0,0" VerticalAlignment="Top" Width="345" FontSize="16" HorizontalContentAlignment="Center"/>
         <Label x:Name="AddTextillLabel" Content="DODAWANIE PRZĘDZ" HorizontalAlignment="Center" Height="30" Margin="0,26,0,0" VerticalAlignment="Top" Width="256" Grid.Column="1" FontSize="16" HorizontalContentAlignment="Center"/>
-        <ComboBox x:Name="SelectTextillMakerComboBox" HorizontalAlignment="Center" Height="24" Margin="0,62,0,0" VerticalAlignment="Top" Width="348" Grid.Column="1"/>
+        <ComboBox x:Name="SelectTextillMakerComboBox" HorizontalAlignment="Center" Height="30" Margin="0,62,0,0" VerticalAlignment="Top" Width="348" Grid.Column="1"/>
         <TextBox x:Name="AddColorNameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,105,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="348" FontSize="14"/>
         <Label x:Name="AddMakerLabel" Content="DODAWANIE PRODUCENTA I TYPU PRZĘDZY" HorizontalAlignment="Center" Height="30" Margin="0,211,0,0" VerticalAlignment="Top" Width="348" Grid.Column="1" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Panel.ZIndex="5"/>
         <TextBox x:Name="AddMakerNameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,261,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="348" FontSize="14"/>
