@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BobbinPrinter"
         mc:Ignorable="d"
-        Title="TextillList" Height="640" Width="800">
+        Title="TextillList" Height="640" Width="800" Top="200" Left="400">
     <Grid Width="792" Margin="0" Height="609" VerticalAlignment="Bottom">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="397*"/>

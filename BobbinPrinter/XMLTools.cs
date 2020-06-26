@@ -9,7 +9,8 @@ namespace BobbinPrinter
 {
     class XMLTools
     {
-        
+
+        /*
         public void XMLcreate()
         {
             List<Textills> tS = new List<Textills>();
@@ -33,27 +34,52 @@ namespace BobbinPrinter
 
             xml.Save("textills.xml");
         }
+        */
 
-        public void XMLAddElement()
+        public void XMLcreate()
+        {
+            
+            XDocument xml = new XDocument(
+                new XDeclaration("1.0", "utf-8", "yes"),
+                new XComment("Lista przędz"),
+                new XElement("database",
+                new XElement("textills"),
+                new XElement("makers")
+                )
+                );
+
+            xml.Save("textills.xml");
+        }
+
+        public void XMLAddElementTextill(string maker, string stuff, string color)
         {
             XDocument document = XDocument.Load("textills.xml");
-            document.Element("textills").Add(
+            document.Element("database").Element("textills").Add(
                 new XElement("textill",
-                        new XElement("maker", "Skrętka"),
-                        new XElement("stuff", "AB50/50"),
-                        new XElement("color", "Biały")
+                        new XElement("maker", maker),
+                        new XElement("stuff", stuff),
+                        new XElement("color", color)
                 ));
             document.Save("textills.xml");
         }
 
-        public void XMLchange()
+        public void XMLAddElementMaker(string maker)
+        {
+            XDocument document = XDocument.Load("textills.xml");
+            document.Element("database").Element("makers").Add(
+                  new XElement("maker", maker)
+                  );
+            document.Save("textills.xml");
+        }
+
+        public void XMLEditElement(string nodeName, string elementName, string currentValue, string newValue)
         {
             XDocument document = XDocument.Load("textills.xml");
 
-            var records = document.Root.Elements("textill").Where(
-                record => record.Element("color").Value == "Biały");
+            var records = document.Root.Elements(nodeName).Where(
+                record => record.Element(elementName).Value == currentValue);
             if (records.Any())
-                records.First().Element("color").Value = "Różowy";
+                records.First().Element(elementName).Value = newValue;
 
             document.Save("textills.xml");
         }

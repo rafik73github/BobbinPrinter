@@ -28,7 +28,8 @@ namespace BobbinPrinter
 
         private void AddPrintButton_Click(object sender, RoutedEventArgs e)
         {
-            xmlTools.XMLchange();
+            //xmlTools.XMLAddElementTextill("Frafil","A100 32/2","Nero");
+            xmlTools.XMLAddElementMaker("Frafil");
         }
 
         private void TextillListButton_Click(object sender, RoutedEventArgs e)
