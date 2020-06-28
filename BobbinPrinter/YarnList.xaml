@@ -1,0 +1,26 @@
+﻿<Window x:Class="BobbinPrinter.YarnList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BobbinPrinter"
+        mc:Ignorable="d"
+        Title="YarnList" Height="640" Width="800" Top="100" Left="400" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236">
+    <Grid Width="792" Margin="0" Height="609" VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="397*"/>
+            <ColumnDefinition Width="395*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox x:Name="groupBox1" Grid.Column="1" Header="DODAWANIE PRODUCENTA I TYPU PRZĘDZY" HorizontalAlignment="Left" Height="159" Margin="10,202,0,0" VerticalAlignment="Top" Width="375" FontWeight="Bold" FontSize="14" Foreground="#FFFFE800"/>
+        <GroupBox x:Name="groupBox2" Header="LISTA PRZĘDZ" HorizontalAlignment="Left" Height="589" Margin="10,10,0,0" VerticalAlignment="Top" Width="377" FontSize="14" FontWeight="Bold" Foreground="#FFFFE800"/>
+        <GroupBox x:Name="groupBox" Grid.Column="1" Header="DODAWANIE PRZĘDZ" HorizontalAlignment="Left" Height="187" Margin="10,10,0,0" VerticalAlignment="Top" Width="375" Foreground="#FFFFE800" BorderBrush="White" FontSize="14" FontWeight="Bold"/>
+        <ComboBox x:Name="SelectYarnTypeComboBox" HorizontalAlignment="Center" Height="30" Margin="0,39,0,0" VerticalAlignment="Top" Width="345"/>
+        <ComboBox x:Name="SelectYarnMakerComboBox" HorizontalAlignment="Center" Height="30" Margin="0,39,0,0" VerticalAlignment="Top" Width="348" Grid.Column="1"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz producenta i typ przędzy"/>
+        <TextBox x:Name="AddColorNameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz kolor przędzy"/>
+        <TextBox x:Name="AddMakerNameTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz producenta i typ przędzy (np: FRAFIL A100)"/>
+        <Button x:Name="AddColorNameButton" Content="DODAJ PRZĘDZĘ" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,149,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddColorNameButton_Click"/>
+        <Button x:Name="AddMakerNameButton" Content="DODAJ PRODUCENTA" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,311,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddMakerNameButton_Click"/>
+        <Button x:Name="BackToMainMenuButton" Content="WRÓC DO GŁÓWNEGO PANELU" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,483,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="BackToMainMenuButton_Click"/>
+        <Button x:Name="YarnListExitProgramButton" Content="ZAKOŃCZ PROGRAM" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,531,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="YarnListExitProgramButton_Click"/>
+    </Grid>
+</Window>

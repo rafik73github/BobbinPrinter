@@ -17,7 +17,7 @@ namespace BobbinPrinter
         XMLTools xTools = new XMLTools();
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            if(File.Exists("textills.xml"))
+            if(File.Exists("yarns.xml"))
             {
                 OpenMainWindow();
             }

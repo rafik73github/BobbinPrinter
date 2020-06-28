@@ -32,11 +32,11 @@ namespace BobbinPrinter
             xmlTools.XMLAddElementMaker("Frafil");
         }
 
-        private void TextillListButton_Click(object sender, RoutedEventArgs e)
+        private void YarnListButton_Click(object sender, RoutedEventArgs e)
         {
-            TextillList tL = new TextillList();
+            YarnList yL = new YarnList();
             this.Hide();
-            tL.Show();
+            yL.Show();
         }
 
         private void MainMenuExitButton_Click(object sender, RoutedEventArgs e)

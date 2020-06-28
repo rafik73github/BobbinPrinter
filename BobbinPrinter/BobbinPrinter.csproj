@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,10 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TextillList.xaml.cs">
-      <DependentUpon>TextillList.xaml</DependentUpon>
+    <Compile Include="Makers.cs" />
+    <Compile Include="YarnList.xaml.cs">
+      <DependentUpon>YarnList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Textills.cs" />
+    <Compile Include="Yarns.cs" />
     <Compile Include="XMLTools.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -72,7 +74,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="TextillList.xaml">
+    <Page Include="YarnList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
