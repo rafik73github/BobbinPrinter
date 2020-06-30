@@ -8,10 +8,10 @@ namespace BobbinPrinter
 {
     class Yarns
     {
-        // TODO: add string YarnType (type of yarn e.g. cotton, acrillic... 
-        // add string YarnSize(e.g. 32/2 ...
-        
+               
         public string YarnMaker { get; set; }
+        public string YarnType { get; set; }
+        public string YarnSize { get; set; }
         public string YarnColor { get; set; }
 
         public Yarns()
@@ -19,9 +19,11 @@ namespace BobbinPrinter
 
         }
 
-        public Yarns (string yarnMaker, string yarnColor)
+        public Yarns (string yarnMaker, string yarnType, string yarnSize, string yarnColor)
         {
             YarnMaker = yarnMaker;
+            YarnType = yarnType;
+            YarnSize = yarnSize;
             YarnColor = yarnColor;
         }
 

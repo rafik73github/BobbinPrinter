@@ -36,7 +36,7 @@ namespace BobbinPrinter
         }
         */
 
-        //TODO: add XElements: yarntypes, yarnsizes
+        
         public void XMLcreate()
         {
             
@@ -44,27 +44,31 @@ namespace BobbinPrinter
                 new XDeclaration("1.0", "utf-8", "yes"),
                 new XComment("Lista przędz"),
                 new XElement("database",
-                new XElement("yarns"),
-                new XElement("makers")
+                new XElement("makers"),
+                new XElement("yarntypes"),
+                new XElement("yarnsizes"),
+                new XElement("yarns")
                 )
                 );
 
             xml.Save("yarns.xml");
         }
 
-        // TODO: add XElements: type, size
-        public void XMLAddElementYarn(string maker, string color)
+        
+        public void XMLAddYarn(string maker, string type, string size, string color)
         {
             XDocument document = XDocument.Load("yarns.xml");
             document.Element("database").Element("yarns").Add(
                 new XElement("yarn",
                         new XElement("maker", maker),
+                        new XElement("type", type),
+                        new XElement("size", size),
                         new XElement("color", color)
                 ));
             document.Save("yarns.xml");
         }
 
-        public void XMLAddElementMaker(string maker)
+        public void XMLAddMaker(string maker)
         {
             XDocument document = XDocument.Load("yarns.xml");
             document.Element("database").Element("makers").Add(
@@ -74,17 +78,27 @@ namespace BobbinPrinter
             document.Save("yarns.xml");
         }
 
-        public void XMLEditElement(string nodeName, string elementName, string currentValue, string newValue)
+        public void XMLAddType(string type)
         {
             XDocument document = XDocument.Load("yarns.xml");
-
-            var records = document.Root.Elements(nodeName).Where(
-                record => record.Element(elementName).Value == currentValue);
-            if (records.Any())
-                records.First().Element(elementName).Value = newValue;
-
+            document.Element("database").Element("yarntypes").Add(
+                  new XElement("type",
+                  new XElement("typeName", type)
+                  ));
             document.Save("yarns.xml");
         }
+
+        public void XMLAddSize(string size)
+        {
+            XDocument document = XDocument.Load("yarns.xml");
+            document.Element("database").Element("yarnsizes").Add(
+                  new XElement("size",
+                  new XElement("sizeName", size)
+                  ));
+            document.Save("yarns.xml");
+        }
+
+        
 
         public List<Makers> XMLToSelectYarnMakerComboBox()
         {
@@ -99,7 +113,49 @@ namespace BobbinPrinter
             return makersList;
         }
 
+        public List<Types> XMLToSelectYarnTypeComboBox()
+        {
+            XDocument document = XDocument.Load("yarns.xml");
+            List<Types> typesList = (from xml in document.Elements("database").Elements("yarntypes").Elements("type")
+                                       select new Types(
+
+              xml.Element("typeName").Value
+              )
+                  ).ToList<Types>();
+
+            return typesList;
+        }
+
+        public List<Sizes> XMLToSelectYarnSizeComboBox()
+        {
+            XDocument document = XDocument.Load("yarns.xml");
+            List<Sizes> sizesList = (from xml in document.Elements("database").Elements("yarnsizes").Elements("size")
+                                     select new Sizes(
+
+            xml.Element("sizeName").Value
+            )
+                  ).ToList<Sizes>();
+
+            return sizesList;
+        }
+
+        public void XMLEditElement(string nodeName, string elementName, string currentValue, string newValue)
+        {
+            XDocument document = XDocument.Load("yarns.xml");
+
+            var records = document.Root.Elements(nodeName).Where(
+                record => record.Element(elementName).Value == currentValue);
+            if (records.Any())
+                records.First().Element(elementName).Value = newValue;
+
+            document.Save("yarns.xml");
+        }
+
+        
+
     }
+
+
 
     
     

@@ -57,6 +57,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Makers.cs" />
+    <Compile Include="Sizes.cs" />
+    <Compile Include="Types.cs" />
     <Compile Include="YarnList.xaml.cs">
       <DependentUpon>YarnList.xaml</DependentUpon>
     </Compile>
