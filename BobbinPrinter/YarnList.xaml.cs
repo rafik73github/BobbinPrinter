@@ -45,7 +45,8 @@ namespace BobbinPrinter
                 SelectYarnSizeComboBox.Items.Add(recordLS.SizesString);
             }
 
-           
+            
+            
         }
 
        
@@ -59,12 +60,19 @@ namespace BobbinPrinter
             }
             else
             {
-                xmlTools.XMLAddMaker(addMakerTextBoxText.Trim().ToUpper());
-                AddMakerTextBox.Text = "";
-                MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
-                                
+                if(xmlTools.XMLIfElementValue("yarnmakers", "yarnmaker", addMakerTextBoxText.Trim().ToUpper()))
+                {
+                    AddMakerTextBox.Text = "";
+                    MessageBox.Show("TAKI PRODUCENT PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    xmlTools.XMLAddMaker(addMakerTextBoxText.Trim().ToUpper());
+                    AddMakerTextBox.Text = "";
+                    MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
                     SelectYarnMakerComboBox.Items.Add(addMakerTextBoxText.Trim().ToUpper());
-               
+                }
             }
         }
 
@@ -78,12 +86,19 @@ namespace BobbinPrinter
             }
             else
             {
-                xmlTools.XMLAddType(addTypeTextBoxText.Trim().ToUpper());
-                AddTypeTextBox.Text = "";
-                MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (xmlTools.XMLIfElementValue("yarntypes", "yarntype", addTypeTextBoxText.Trim().ToUpper()))
+                {
+                    AddTypeTextBox.Text = "";
+                    MessageBox.Show("TAKI TYP PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    xmlTools.XMLAddType(addTypeTextBoxText.Trim().ToUpper());
+                    AddTypeTextBox.Text = "";
+                    MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                SelectYarnTypeComboBox.Items.Add(addTypeTextBoxText.Trim().ToUpper());
-
+                    SelectYarnTypeComboBox.Items.Add(addTypeTextBoxText.Trim().ToUpper());
+                }
             }
         }
 
@@ -96,12 +111,19 @@ namespace BobbinPrinter
             }
             else
             {
-                xmlTools.XMLAddSize(addSizeTextBoxText.Trim().ToUpper());
-                AddSizeTextBox.Text = "";
-                MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (xmlTools.XMLIfElementValue("yarnsizes", "yarnsize", addSizeTextBoxText.Trim().ToUpper()))
+                {
+                    AddSizeTextBox.Text = "";
+                    MessageBox.Show("TAKA GRUBOŚĆ PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    xmlTools.XMLAddSize(addSizeTextBoxText.Trim().ToUpper());
+                    AddSizeTextBox.Text = "";
+                    MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                SelectYarnSizeComboBox.Items.Add(addSizeTextBoxText.Trim().ToUpper());
-
+                    SelectYarnSizeComboBox.Items.Add(addSizeTextBoxText.Trim().ToUpper());
+                }
             }
         }
 

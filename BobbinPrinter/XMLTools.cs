@@ -44,7 +44,7 @@ namespace BobbinPrinter
                 new XDeclaration("1.0", "utf-8", "yes"),
                 new XComment("Lista przędz"),
                 new XElement("database",
-                new XElement("makers"),
+                new XElement("yarnmakers"),
                 new XElement("yarntypes"),
                 new XElement("yarnsizes"),
                 new XElement("yarns")
@@ -71,8 +71,8 @@ namespace BobbinPrinter
         public void XMLAddMaker(string maker)
         {
             XDocument document = XDocument.Load("yarns.xml");
-            document.Element("database").Element("makers").Add(
-                  new XElement("maker",
+            document.Element("database").Element("yarnmakers").Add(
+                  new XElement("yarnmaker",
                   new XElement("makerName", maker)
                   ));
             document.Save("yarns.xml");
@@ -82,7 +82,7 @@ namespace BobbinPrinter
         {
             XDocument document = XDocument.Load("yarns.xml");
             document.Element("database").Element("yarntypes").Add(
-                  new XElement("type",
+                  new XElement("yarntype",
                   new XElement("typeName", type)
                   ));
             document.Save("yarns.xml");
@@ -92,7 +92,7 @@ namespace BobbinPrinter
         {
             XDocument document = XDocument.Load("yarns.xml");
             document.Element("database").Element("yarnsizes").Add(
-                  new XElement("size",
+                  new XElement("yarnsize",
                   new XElement("sizeName", size)
                   ));
             document.Save("yarns.xml");
@@ -103,7 +103,7 @@ namespace BobbinPrinter
         public List<Makers> XMLToSelectYarnMakerComboBox()
         {
             XDocument document = XDocument.Load("yarns.xml");
-            List<Makers> makersList = (from xml in document.Elements("database").Elements("makers").Elements("maker")
+            List<Makers> makersList = (from xml in document.Elements("database").Elements("yarnmakers").Elements("yarnmaker")
                                        select new Makers(
 
               xml.Element("makerName").Value
@@ -116,7 +116,7 @@ namespace BobbinPrinter
         public List<Types> XMLToSelectYarnTypeComboBox()
         {
             XDocument document = XDocument.Load("yarns.xml");
-            List<Types> typesList = (from xml in document.Elements("database").Elements("yarntypes").Elements("type")
+            List<Types> typesList = (from xml in document.Elements("database").Elements("yarntypes").Elements("yarntype")
                                        select new Types(
 
               xml.Element("typeName").Value
@@ -129,7 +129,7 @@ namespace BobbinPrinter
         public List<Sizes> XMLToSelectYarnSizeComboBox()
         {
             XDocument document = XDocument.Load("yarns.xml");
-            List<Sizes> sizesList = (from xml in document.Elements("database").Elements("yarnsizes").Elements("size")
+            List<Sizes> sizesList = (from xml in document.Elements("database").Elements("yarnsizes").Elements("yarnsize")
                                      select new Sizes(
 
             xml.Element("sizeName").Value
@@ -150,8 +150,14 @@ namespace BobbinPrinter
 
             document.Save("yarns.xml");
         }
-
-        
+        //TODO fix it - was find only first element !
+        public bool XMLIfElementValue(string nodeName, string elementName, string elementValue)
+        {
+            XDocument document = XDocument.Load("yarns.xml");
+            var wantedElement = document.Root.Descendants(nodeName).Where(
+                wantedRecord => wantedRecord.Element(elementName).Value == elementValue);
+            return wantedElement.Any();
+                }
 
     }
 
