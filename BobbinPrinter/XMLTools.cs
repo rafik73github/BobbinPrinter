@@ -10,33 +10,7 @@ namespace BobbinPrinter
     class XMLTools
     {
         
-
-        /*
-        public void XMLcreate()
-        {
-            List<Textills> tS = new List<Textills>();
-            tS.Add(new Textills("Frafil A100", "Czarny"));
-            tS.Add(new Textills("TVU AB50/50", "Navy-Mel. 360"));
-            tS.Add(new Textills("Skrętka AB50/50", "Popiel"));
-
-            XDocument xml = new XDocument(
-                new XDeclaration("1.0", "utf-8", "yes"),
-                new XComment("Lista przędz"),
-                new XElement("textills",
-                    from record in tS
-                    orderby record.TextillMaker
-                    select new XElement("textill",
-                        new XElement("maker", record.TextillMaker),
-                        new XElement("color", record.TextillColor)
-                        )
-                    )
-                );
-
-            xml.Save("textills.xml");
-        }
-        */
-
-        
+       
         public void XMLcreate()
         {
             
@@ -150,14 +124,25 @@ namespace BobbinPrinter
 
             document.Save("yarns.xml");
         }
-        //TODO fix it - was find only first element !
-        public bool XMLIfElementValue(string nodeName, string elementName, string elementValue)
+        
+        public bool XMLIsThereValue(string nodeName, string elementName, string elementValue)
         {
             XDocument document = XDocument.Load("yarns.xml");
             var wantedElement = document.Root.Descendants(nodeName).Where(
                 wantedRecord => wantedRecord.Element(elementName).Value == elementValue);
             return wantedElement.Any();
-                }
+        }
+
+        public bool XMLIsThereColor(string makerValue, string typeValue, string sizeValue, string colorValue)
+        {
+            XDocument document = XDocument.Load("yarns.xml");
+            var wantedElement = document.Root.Descendants("yarn").Where(
+                wantedValue => wantedValue.Element("maker").Value == makerValue
+                && wantedValue.Element("type").Value == typeValue
+                && wantedValue.Element("size").Value == sizeValue
+                && wantedValue.Element("color").Value == colorValue);
+            return wantedElement.Any();
+        }
 
     }
 

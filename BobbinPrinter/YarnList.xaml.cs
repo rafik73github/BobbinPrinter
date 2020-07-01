@@ -60,7 +60,7 @@ namespace BobbinPrinter
             }
             else
             {
-                if(xmlTools.XMLIfElementValue("yarnmakers", "yarnmaker", addMakerTextBoxText.Trim().ToUpper()))
+                if(xmlTools.XMLIsThereValue("yarnmaker", "makerName", addMakerTextBoxText.Trim().ToUpper()))
                 {
                     AddMakerTextBox.Text = "";
                     MessageBox.Show("TAKI PRODUCENT PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -86,7 +86,7 @@ namespace BobbinPrinter
             }
             else
             {
-                if (xmlTools.XMLIfElementValue("yarntypes", "yarntype", addTypeTextBoxText.Trim().ToUpper()))
+                if (xmlTools.XMLIsThereValue("yarntype", "typeName", addTypeTextBoxText.Trim().ToUpper()))
                 {
                     AddTypeTextBox.Text = "";
                     MessageBox.Show("TAKI TYP PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -111,7 +111,7 @@ namespace BobbinPrinter
             }
             else
             {
-                if (xmlTools.XMLIfElementValue("yarnsizes", "yarnsize", addSizeTextBoxText.Trim().ToUpper()))
+                if (xmlTools.XMLIsThereValue("yarnsize", "sizeName", addSizeTextBoxText.Trim().ToUpper()))
                 {
                     AddSizeTextBox.Text = "";
                     MessageBox.Show("TAKA GRUBOŚĆ PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -140,12 +140,22 @@ namespace BobbinPrinter
             }
             else
             {
-                xmlTools.XMLAddYarn(selectYarnMakerComboBoxText.ToUpper(), selectYarnTypeComboBoxText.ToUpper(), selectYarnSizeComboBoxText.ToUpper(), addColorNameTextBoxText.ToUpper());
-                AddColorNameTextBox.Text = "";
-                SelectYarnMakerComboBox.SelectedIndex = -1;
-                SelectYarnTypeComboBox.SelectedIndex = -1;
-                SelectYarnSizeComboBox.SelectedIndex = -1;
-                MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (xmlTools.XMLIsThereColor(selectYarnMakerComboBoxText, selectYarnTypeComboBoxText, selectYarnSizeComboBoxText, addColorNameTextBoxText.Trim().ToUpper()))
+                {
+                    MessageBox.Show("TAKA PRZĘDZA\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    AddColorNameTextBox.Text = "";
+                    
+
+                }
+                else
+                {
+                    xmlTools.XMLAddYarn(selectYarnMakerComboBoxText.ToUpper(), selectYarnTypeComboBoxText.ToUpper(), selectYarnSizeComboBoxText.ToUpper(), addColorNameTextBoxText.ToUpper());
+                    AddColorNameTextBox.Text = "";
+                   /* SelectYarnMakerComboBox.SelectedIndex = -1;
+                    SelectYarnTypeComboBox.SelectedIndex = -1;
+                    SelectYarnSizeComboBox.SelectedIndex = -1;*/
+                    MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
