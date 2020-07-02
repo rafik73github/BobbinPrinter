@@ -5,31 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BobbinPrinter"
         mc:Ignorable="d"
-        Title="YarnList" Height="640" Width="1200" Top="100" Left="100" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236">
-    <Grid Width="1192" Margin="0" Height="609" VerticalAlignment="Bottom">
+        Title="YarnList" Height="640" Width="496" Top="100" Left="100" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236">
+    <Grid Height="609" VerticalAlignment="Bottom">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="396"/>
-            <ColumnDefinition Width="396"/>
-            <ColumnDefinition Width="400"/>
+
+            
+
         </Grid.ColumnDefinitions>
-        <GroupBox x:Name="groupBox1" Grid.Column="1" Header="DODAWANIE PRODUCENTA PRZĘDZY" HorizontalAlignment="Center" Height="131" Margin="0,10,0,0" VerticalAlignment="Top" Width="375" FontWeight="Bold" FontSize="14" Foreground="#FFFFE800"/>
-        <GroupBox x:Name="groupBox2" Header="LISTA PRZĘDZ" HorizontalAlignment="Left" Height="568" Margin="10,10,0,0" VerticalAlignment="Top" Width="377" FontSize="14" FontWeight="Bold" Foreground="#FFFFE800"/>
-        <GroupBox x:Name="groupBox" Grid.Column="2" Header="DODAWANIE PRZĘDZ" HorizontalAlignment="Center" Height="266" Margin="0,10,0,0" VerticalAlignment="Top" Width="375" Foreground="#FFFFE800" BorderBrush="White" FontSize="14" FontWeight="Bold"/>
-        <ComboBox x:Name="FilterYarnComboBox" HorizontalAlignment="Center" Height="30" Margin="32,39,20,0" VerticalAlignment="Top" Width="344"/>
-        <ComboBox x:Name="SelectYarnMakerComboBox" HorizontalAlignment="Center" Height="30" Margin="0,39,0,0" VerticalAlignment="Top" Width="348" Grid.Column="2"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz producenta przędzy"/>
-        <TextBox x:Name="AddColorNameTextBox" Grid.Column="2" HorizontalAlignment="Center" Height="30" Margin="0,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz kolor przędzy"/>
-        <TextBox x:Name="AddMakerTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz producenta przędzy (np: FRAFIL)"/>
-        <Button x:Name="AddYarnButton" Content="DODAJ PRZĘDZĘ" Grid.Column="2" HorizontalAlignment="Center" Height="30" Margin="0,224,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddYarnButton_Click"/>
-        <Button x:Name="AddMakerButton" Content="DODAJ PRODUCENTA" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,92,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddMakerButton_Click"/>
-        <Button x:Name="BackToMainMenuButton" Content="WRÓC DO GŁÓWNEGO PANELU" Grid.Column="2" HorizontalAlignment="Center" Height="30" Margin="25,483,27,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="BackToMainMenuButton_Click"/>
-        <Button x:Name="YarnListExitProgramButton" Content="ZAKOŃCZ PROGRAM" Grid.Column="2" HorizontalAlignment="Center" Height="30" Margin="25,530,27,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="YarnListExitProgramButton_Click"/>
-        <ComboBox x:Name="SelectYarnTypeComboBox" HorizontalAlignment="Center" Height="30" Margin="0,83,0,0" VerticalAlignment="Top" Width="348" Grid.Column="2"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz typ przędzy"/>
-        <ComboBox x:Name="SelectYarnSizeComboBox" HorizontalAlignment="Center" Height="30" Margin="0,128,0,0" VerticalAlignment="Top" Width="348" Grid.Column="2"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz grubość przędzy"/>
-        <GroupBox x:Name="groupBox1_Copy" Grid.Column="1" Header="DODAWANIE TYPU PRZĘDZY" HorizontalAlignment="Center" Height="131" Margin="0,147,0,0" VerticalAlignment="Top" Width="375" FontWeight="Bold" FontSize="14" Foreground="#FFFFE800"/>
-        <GroupBox x:Name="groupBox1_Copy1" Grid.Column="1" Header="DODAWANIE GRUBOŚCI PRZĘDZY" HorizontalAlignment="Center" Height="131" Margin="0,283,0,0" VerticalAlignment="Top" Width="375" FontWeight="Bold" FontSize="14" Foreground="#FFFFE800"/>
-        <TextBox x:Name="AddTypeTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz typ przędzy (np: AB 50/50)"/>
-        <Button x:Name="AddTypeButton" Content="DODAJ TYP" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,229,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddTypeButton_Click" />
-        <TextBox x:Name="AddSizeTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz grubość przędzy (np: 32/2)"/>
-        <Button x:Name="AddSizeButton" Content="DODAJ GRUBOŚĆ" Grid.Column="1" HorizontalAlignment="Center" Height="30" Margin="0,362,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddSizeButton_Click" />
+
+
+        <Button x:Name="BackToMainMenuButton" Content="WRÓC DO GŁÓWNEGO PANELU" HorizontalAlignment="Center" Height="30" Margin="49,491,74,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="BackToMainMenuButton_Click" Grid.Column="1"/>
+        <Button x:Name="YarnListExitProgramButton" Content="ZAKOŃCZ PROGRAM" HorizontalAlignment="Center" Height="30" Margin="49,543,74,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="YarnListExitProgramButton_Click" Grid.Column="1"/>
+
+        
+                <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="484" Margin="10,-8,0,0" VerticalAlignment="Top" Width="476" Background="#FF362236" >
+
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid Name="Panel">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Panel" Property="Background" Value="Orange" />
+                                        
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Panel" Property="Background" Value="#FF362236" />
+                                       
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem Header="LISTA PRZĘDZ" >
+                <Grid>
+                    <GroupBox x:Name="groupBox2" Header="LISTA PRZĘDZ" HorizontalAlignment="Center" Height="436" Margin="46,10,46,0" VerticalAlignment="Top" Width="378" FontSize="14" FontWeight="Bold" Foreground="#FFFFE800"/>
+                    <ComboBox x:Name="FilterYarnComboBox" HorizontalAlignment="Center" Height="30" Margin="44,44,43,0" VerticalAlignment="Top" Width="344"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="DODAWANIE PRZĘDZ">
+                <Grid>
+                    <GroupBox x:Name="groupBox" Header="DODAWANIE PRZĘDZ" HorizontalAlignment="Center" Height="355" Margin="27,10,29,0" VerticalAlignment="Top" Width="375" Foreground="#FFFFE800" BorderBrush="White" FontSize="14" FontWeight="Bold"/>
+                    <ComboBox x:Name="SelectYarnMakerComboBox" HorizontalAlignment="Center" Height="30" Margin="40,46,43,0" VerticalAlignment="Top" Width="348"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz producenta przędzy"/>
+                    <ComboBox x:Name="SelectYarnTypeComboBox" HorizontalAlignment="Center" Height="30" Margin="40,99,43,0" VerticalAlignment="Top" Width="348"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz typ przędzy"/>
+                    <ComboBox x:Name="SelectYarnSizeComboBox" HorizontalAlignment="Center" Height="30" Margin="40,151,43,0" VerticalAlignment="Top" Width="348"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz grubość przędzy"/>
+                    <TextBox x:Name="AddColorNameTextBox" HorizontalAlignment="Center" Height="30" Margin="40,200,43,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz kolor przędzy"/>
+                    <Button x:Name="AddYarnButton" Content="DODAJ PRZĘDZĘ" HorizontalAlignment="Center" Height="30" Margin="40,310,43,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddYarnButton_Click"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="EDYCJA PRZĘDZ">
+
+            </TabItem>
+            <TabItem Header="PARAMETRY">
+                <Grid>
+                    <GroupBox x:Name="groupBox1" Header="DODAWANIE PRODUCENTA PRZĘDZY" HorizontalAlignment="Center" Height="131" Margin="0,10,0,0" VerticalAlignment="Top" Width="376" FontWeight="Bold" FontSize="14" Foreground="#FFFFE800"/>
+                    <TextBox x:Name="AddMakerTextBox" HorizontalAlignment="Center" Height="30" Margin="62,35,60,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz producenta przędzy (np: FRAFIL)" />
+                    <Button x:Name="AddMakerButton" Content="DODAJ PRODUCENTA" HorizontalAlignment="Center" Height="30" Margin="42,95,41,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddMakerButton_Click" />
+                    <GroupBox x:Name="groupBox1_Copy" Header="DODAWANIE TYPU PRZĘDZY" HorizontalAlignment="Center" Height="131" Margin="28,157,27,0" VerticalAlignment="Top" Width="376" FontWeight="Bold" FontSize="14" Foreground="#FFFFE800" />
+                    <TextBox x:Name="AddTypeTextBox" HorizontalAlignment="Center" Height="30" Margin="42,184,41,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz typ przędzy (np: AB 50/50)" />
+                    <Button x:Name="AddTypeButton" Content="DODAJ TYP" HorizontalAlignment="Center" Height="30" Margin="42,241,41,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddTypeButton_Click"  />
+                    <GroupBox x:Name="groupBox1_Copy1" Header="DODAWANIE GRUBOŚCI PRZĘDZY" HorizontalAlignment="Center" Height="131" Margin="28,305,29,0" VerticalAlignment="Top" Width="374" FontWeight="Bold" FontSize="14" Foreground="#FFFFE800" />
+                    <TextBox x:Name="AddSizeTextBox" HorizontalAlignment="Center" Height="30" Margin="42,331,41,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz grubość przędzy (np: 32/2)" />
+                    <Button x:Name="AddSizeButton" Content="DODAJ GRUBOŚĆ" HorizontalAlignment="Center" Height="30" Margin="42,391,41,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddSizeButton_Click"  />
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
