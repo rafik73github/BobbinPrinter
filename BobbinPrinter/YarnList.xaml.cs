@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,7 @@ namespace BobbinPrinter
             foreach (var recordLM in lM)
             {
                 SelectYarnMakerComboBox.Items.Add(recordLM.MakersString);
+                FilterYarnComboBox.Items.Add(recordLM.MakersString);
             }
 
             List<Types> lT = xmlTools.XMLToSelectYarnTypeComboBox();
@@ -45,8 +47,21 @@ namespace BobbinPrinter
                 SelectYarnSizeComboBox.Items.Add(recordLS.SizesString);
             }
 
-            
-            
+            List<Yarns> lY = xmlTools.XMLToYarnsListView();
+            /*
+            foreach (var recordLY in lY)
+            {
+                string vall = recordLY.YarnMaker + " - " + recordLY.YarnColor + " - " + recordLY.YarnType + " " + recordLY.YarnSize ;
+                YarnsListView.Items.Add(vall);
+            }
+            */
+            ObservableCollection<Yarns> oC = new ObservableCollection<Yarns>(lY);
+            foreach (var recordLY in oC)
+            {
+                string vall = recordLY.YarnMaker + " - " + recordLY.YarnColor + " - " + recordLY.YarnType + " " + recordLY.YarnSize;
+                YarnsListView.Items.Add(vall);
+            }
+
         }
 
        
@@ -72,6 +87,7 @@ namespace BobbinPrinter
                     MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     SelectYarnMakerComboBox.Items.Add(addMakerTextBoxText.Trim().ToUpper());
+                    FilterYarnComboBox.Items.Add(addMakerTextBoxText.Trim().ToUpper());
                 }
             }
         }
@@ -151,6 +167,7 @@ namespace BobbinPrinter
                 {
                     xmlTools.XMLAddYarn(selectYarnMakerComboBoxText.ToUpper(), selectYarnTypeComboBoxText.ToUpper(), selectYarnSizeComboBoxText.ToUpper(), addColorNameTextBoxText.ToUpper());
                     AddColorNameTextBox.Text = "";
+                   
                    /* SelectYarnMakerComboBox.SelectedIndex = -1;
                     SelectYarnTypeComboBox.SelectedIndex = -1;
                     SelectYarnSizeComboBox.SelectedIndex = -1;*/

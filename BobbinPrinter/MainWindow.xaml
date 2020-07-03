@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="BobbinPrinter" Height="450" Width="355" ResizeMode="NoResize" Margin="0" Left="600" Top="200" WindowStyle="None" Background="#FF362236">
     <Grid>
-        <Button x:Name="AddPrintButton" Content="DRUKOWANIE ETYKIET" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,82,0,0" Height="30" FontSize="14" Click="AddPrintButton_Click"/>
-        <Button x:Name="YarnListButton" Content="LISTA PRZĘDZ" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,132,0,0" Height="30" FontSize="14" Click="YarnListButton_Click"/>
-        <Button x:Name="MainMenuExitButton" Content="ZAMKNIJ" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,332,0,0" Height="30" FontSize="14" Click="MainMenuExitButton_Click"/>
-        <Label x:Name="label" Content="PANEL GŁÓWNY" HorizontalAlignment="Center" Height="30" Margin="17,24,17,0" VerticalAlignment="Top" Width="315" FontSize="16" HorizontalContentAlignment="Center" Foreground="White" FontWeight="Bold"/>
+        <Button x:Name="AddPrintButton" Content="DRUKOWANIE ETYKIET" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,82,0,0" Height="30" FontSize="14" Click="AddPrintButton_Click" FontWeight="Bold"/>
+        <Button x:Name="YarnListButton" Content="LISTA PRZĘDZ" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,132,0,0" Height="30" FontSize="14" Click="YarnListButton_Click" FontWeight="Bold"/>
+        <Button x:Name="MainMenuExitButton" Content="ZAMKNIJ" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,332,0,0" Height="30" FontSize="14" Click="MainMenuExitButton_Click" FontWeight="Bold"/>
+        <Label x:Name="label" Content="PANEL GŁÓWNY" HorizontalAlignment="Center" Height="30" Margin="17,24,17,0" VerticalAlignment="Top" Width="315" FontSize="16" HorizontalContentAlignment="Center" Foreground="DarkOrange" FontWeight="Bold"/>
 
     </Grid>
 </Window>

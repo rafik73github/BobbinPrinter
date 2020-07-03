@@ -113,6 +113,22 @@ namespace BobbinPrinter
             return sizesList;
         }
 
+        public List<Yarns> XMLToYarnsListView()
+        {
+            XDocument document = XDocument.Load("yarns.xml");
+            List<Yarns> yarnsList = (from xml in document.Elements("database").Elements("yarns").Elements("yarn")
+                                     select new Yarns(
+
+            xml.Element("maker").Value,
+            xml.Element("type").Value,
+            xml.Element("size").Value,
+            xml.Element("color").Value
+            )
+                 ).ToList<Yarns>();
+
+            return yarnsList;
+        }
+
         public void XMLEditElement(string nodeName, string elementName, string currentValue, string newValue)
         {
             XDocument document = XDocument.Load("yarns.xml");
