@@ -9,7 +9,7 @@ namespace BobbinPrinter
 {
     class XMLTools
     {
-        
+        /*
        
         public void XMLcreate()
         {
@@ -74,57 +74,57 @@ namespace BobbinPrinter
 
         
 
-        public List<Makers> XMLToSelectYarnMakerComboBox()
+        public List<YarnmakersModel> XMLToSelectYarnMakerComboBox()
         {
             XDocument document = XDocument.Load("yarns.xml");
-            List<Makers> makersList = (from xml in document.Elements("database").Elements("yarnmakers").Elements("yarnmaker")
-                                       select new Makers(
+            List<YarnmakersModel> makersList = (from xml in document.Elements("database").Elements("yarnmakers").Elements("yarnmaker")
+                                       select new YarnmakersModel(
 
               xml.Element("makerName").Value
               )
-                  ).ToList<Makers>();
+                  ).ToList<YarnmakersModel>();
 
             return makersList;
         }
 
-        public List<Types> XMLToSelectYarnTypeComboBox()
+        public List<YarntypesModel> XMLToSelectYarnTypeComboBox()
         {
             XDocument document = XDocument.Load("yarns.xml");
-            List<Types> typesList = (from xml in document.Elements("database").Elements("yarntypes").Elements("yarntype")
-                                       select new Types(
+            List<YarntypesModel> typesList = (from xml in document.Elements("database").Elements("yarntypes").Elements("yarntype")
+                                       select new YarntypesModel(
 
               xml.Element("typeName").Value
               )
-                  ).ToList<Types>();
+                  ).ToList<YarntypesModel>();
 
             return typesList;
         }
 
-        public List<Sizes> XMLToSelectYarnSizeComboBox()
+        public List<YarnsizesModel> XMLToSelectYarnSizeComboBox()
         {
             XDocument document = XDocument.Load("yarns.xml");
-            List<Sizes> sizesList = (from xml in document.Elements("database").Elements("yarnsizes").Elements("yarnsize")
-                                     select new Sizes(
+            List<YarnsizesModel> sizesList = (from xml in document.Elements("database").Elements("yarnsizes").Elements("yarnsize")
+                                     select new YarnsizesModel(
 
             xml.Element("sizeName").Value
             )
-                  ).ToList<Sizes>();
+                  ).ToList<YarnsizesModel>();
 
             return sizesList;
         }
 
-        public List<Yarns> XMLToYarnsListView()
+        public List<YarnsModel> XMLToYarnsListView()
         {
             XDocument document = XDocument.Load("yarns.xml");
-            List<Yarns> yarnsList = (from xml in document.Elements("database").Elements("yarns").Elements("yarn")
-                                     select new Yarns(
+            List<YarnsModel> yarnsList = (from xml in document.Elements("database").Elements("yarns").Elements("yarn")
+                                     select new YarnsModel(
 
             xml.Element("maker").Value,
             xml.Element("type").Value,
             xml.Element("size").Value,
             xml.Element("color").Value
             )
-                 ).ToList<Yarns>();
+                 ).ToList<YarnsModel>();
 
             return yarnsList;
         }
@@ -159,7 +159,7 @@ namespace BobbinPrinter
                 && wantedValue.Element("color").Value == colorValue);
             return wantedElement.Any();
         }
-
+        */
     }
 
 

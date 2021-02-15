@@ -28,39 +28,11 @@ namespace BobbinPrinter
         {
             InitializeComponent();
             
-            List<Makers> lM = xmlTools.XMLToSelectYarnMakerComboBox();
-            foreach (var recordLM in lM)
-            {
-                SelectYarnMakerComboBox.Items.Add(recordLM.MakersString);
-                FilterYarnComboBox.Items.Add(recordLM.MakersString);
-            }
-
-            List<Types> lT = xmlTools.XMLToSelectYarnTypeComboBox();
-            foreach (var recordLT in lT)
-            {
-                SelectYarnTypeComboBox.Items.Add(recordLT.TypesString);
-            }
-
-            List<Sizes> lS = xmlTools.XMLToSelectYarnSizeComboBox();
-            foreach (var recordLS in lS)
-            {
-                SelectYarnSizeComboBox.Items.Add(recordLS.SizesString);
-            }
-
-            List<Yarns> lY = xmlTools.XMLToYarnsListView();
-            /*
-            foreach (var recordLY in lY)
-            {
-                string vall = recordLY.YarnMaker + " - " + recordLY.YarnColor + " - " + recordLY.YarnType + " " + recordLY.YarnSize ;
-                YarnsListView.Items.Add(vall);
-            }
-            */
-            ObservableCollection<Yarns> oC = new ObservableCollection<Yarns>(lY);
-            foreach (var recordLY in oC)
-            {
-                string vall = recordLY.YarnMaker + " - " + recordLY.YarnColor + " - " + recordLY.YarnType + " " + recordLY.YarnSize;
-                YarnsListView.Items.Add(vall);
-            }
+            SelectYarnMakerComboBox.ItemsSource = new SQLYarnmakers().GetAllYarnmakers();
+            SelectYarnTypeComboBox.ItemsSource = new SQLYarntypes().GetAllYarntypes();
+            SelectYarnSizeComboBox.ItemsSource = new SQLYarnsizes().GetAllYarnsizes();
+            YarnsListView.ItemsSource = new SQLYarns().GetAllYarns();
+            
 
         }
 
@@ -75,19 +47,19 @@ namespace BobbinPrinter
             }
             else
             {
-                if(xmlTools.XMLIsThereValue("yarnmaker", "makerName", addMakerTextBoxText.Trim().ToUpper()))
+                if(new SQLYarnmakers().IsYarnmakerExist(addMakerTextBoxText))
                 {
                     AddMakerTextBox.Text = "";
                     MessageBox.Show("TAKI PRODUCENT PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
                 else
                 {
-                    xmlTools.XMLAddMaker(addMakerTextBoxText.Trim().ToUpper());
+                    new SQLYarnmakers().AddYarnmaker(new YarnmakersModel(addMakerTextBoxText.ToUpper(), false));
                     AddMakerTextBox.Text = "";
                     MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    SelectYarnMakerComboBox.Items.Add(addMakerTextBoxText.Trim().ToUpper());
-                    FilterYarnComboBox.Items.Add(addMakerTextBoxText.Trim().ToUpper());
+                    SelectYarnMakerComboBox.ItemsSource = null;
+                    SelectYarnMakerComboBox.ItemsSource = new SQLYarnmakers().GetAllYarnmakers();
                 }
             }
         }
@@ -102,18 +74,19 @@ namespace BobbinPrinter
             }
             else
             {
-                if (xmlTools.XMLIsThereValue("yarntype", "typeName", addTypeTextBoxText.Trim().ToUpper()))
+                if (new SQLYarntypes().IsYarntypeExist(addTypeTextBoxText))
                 {
                     AddTypeTextBox.Text = "";
                     MessageBox.Show("TAKI TYP PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
                 else
                 {
-                    xmlTools.XMLAddType(addTypeTextBoxText.Trim().ToUpper());
+                    new SQLYarntypes().AddYarntype(new YarntypesModel(addTypeTextBoxText.ToUpper(), false));
                     AddTypeTextBox.Text = "";
                     MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    SelectYarnTypeComboBox.Items.Add(addTypeTextBoxText.Trim().ToUpper());
+                    SelectYarnTypeComboBox.ItemsSource = null;
+                    SelectYarnTypeComboBox.ItemsSource = new SQLYarntypes().GetAllYarntypes();
                 }
             }
         }
@@ -127,36 +100,41 @@ namespace BobbinPrinter
             }
             else
             {
-                if (xmlTools.XMLIsThereValue("yarnsize", "sizeName", addSizeTextBoxText.Trim().ToUpper()))
+                if (new SQLYarnsizes().IsYarnsizeExist(addSizeTextBoxText))
                 {
                     AddSizeTextBox.Text = "";
                     MessageBox.Show("TAKA GRUBOŚĆ PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
                 else
                 {
-                    xmlTools.XMLAddSize(addSizeTextBoxText.Trim().ToUpper());
+                    new SQLYarnsizes().AddYarnsize(new YarnsizesModel(addSizeTextBoxText.ToUpper(), false));
                     AddSizeTextBox.Text = "";
                     MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    SelectYarnSizeComboBox.Items.Add(addSizeTextBoxText.Trim().ToUpper());
+                    SelectYarnSizeComboBox.ItemsSource = null;
+                    SelectYarnSizeComboBox.ItemsSource = new SQLYarnsizes().GetAllYarnsizes();
                 }
             }
         }
 
         private void AddYarnButton_Click(object sender, RoutedEventArgs e)
         {
-            string selectYarnMakerComboBoxText = SelectYarnMakerComboBox.Text;
-            string selectYarnTypeComboBoxText = SelectYarnTypeComboBox.Text;
-            string selectYarnSizeComboBoxText = SelectYarnSizeComboBox.Text;
-            string addColorNameTextBoxText = AddColorNameTextBox.Text;
+           
+            
+            YarnmakersModel yarnmakersModel = SelectYarnMakerComboBox.SelectedItem as YarnmakersModel;
+            YarntypesModel yarntypesModel = SelectYarnTypeComboBox.SelectedItem as YarntypesModel;
+            YarnsizesModel yarnsizesModel = SelectYarnSizeComboBox.SelectedItem as YarnsizesModel;
+            string addColorNameTextBoxText = AddColorNameTextBox.Text.Trim().ToUpper();
 
-            if (selectYarnMakerComboBoxText.Equals("") || selectYarnTypeComboBoxText.Equals("") || selectYarnSizeComboBoxText.Equals("") || addColorNameTextBoxText.Trim().Equals(""))
+
+
+            if (SelectYarnMakerComboBox.SelectedItem == null || SelectYarnTypeComboBox.SelectedItem == null || SelectYarnSizeComboBox.SelectedItem == null || addColorNameTextBoxText.Equals(""))
             {
                 MessageBox.Show("UZUPEŁNIJ WSZYSTKIE DANE", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
-                if (xmlTools.XMLIsThereColor(selectYarnMakerComboBoxText, selectYarnTypeComboBoxText, selectYarnSizeComboBoxText, addColorNameTextBoxText.Trim().ToUpper()))
+                if (new SQLYarns().IsYarnExist(yarnmakersModel.YarnmakerId, yarntypesModel.YarntypeId,yarnsizesModel.YarnsizeId,addColorNameTextBoxText))
                 {
                     MessageBox.Show("TAKA PRZĘDZA\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     AddColorNameTextBox.Text = "";
@@ -165,15 +143,15 @@ namespace BobbinPrinter
                 }
                 else
                 {
-                    xmlTools.XMLAddYarn(selectYarnMakerComboBoxText.ToUpper(), selectYarnTypeComboBoxText.ToUpper(), selectYarnSizeComboBoxText.ToUpper(), addColorNameTextBoxText.ToUpper());
+                    new SQLYarns().AddYarn(new YarnsModel(yarnmakersModel.YarnmakerId, yarntypesModel.YarntypeId, yarnsizesModel.YarnsizeId, addColorNameTextBoxText, false));
                     AddColorNameTextBox.Text = "";
-                   
-                   /* SelectYarnMakerComboBox.SelectedIndex = -1;
-                    SelectYarnTypeComboBox.SelectedIndex = -1;
-                    SelectYarnSizeComboBox.SelectedIndex = -1;*/
+                    YarnsListView.ItemsSource = null;
+                    YarnsListView.ItemsSource = new SQLYarns().GetAllYarns();
+
                     MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
+            
         }
 
         

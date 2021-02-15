@@ -20,7 +20,7 @@ namespace BobbinPrinter
     /// </summary>
     public partial class MainWindow : Window
     {
-        XMLTools xmlTools = new XMLTools();
+        //XMLTools xmlTools = new XMLTools();
         public MainWindow()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace BobbinPrinter
         private void AddPrintButton_Click(object sender, RoutedEventArgs e)
         {
             //xmlTools.XMLAddElementTextill("Frafil","A100 32/2","Nero");
-            xmlTools.XMLAddMaker("Frafil");
+            //xmlTools.XMLAddMaker("Frafil");
         }
 
         private void YarnListButton_Click(object sender, RoutedEventArgs e)
