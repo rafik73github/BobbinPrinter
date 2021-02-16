@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace BobbinPrinter
 {
@@ -20,7 +7,7 @@ namespace BobbinPrinter
     /// </summary>
     public partial class MainWindow : Window
     {
-        //XMLTools xmlTools = new XMLTools();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -28,8 +15,9 @@ namespace BobbinPrinter
 
         private void AddPrintButton_Click(object sender, RoutedEventArgs e)
         {
-            //xmlTools.XMLAddElementTextill("Frafil","A100 32/2","Nero");
-            //xmlTools.XMLAddMaker("Frafil");
+            YarnPrintPanel yPP = new YarnPrintPanel();
+            this.Hide();
+            yPP.Show();
         }
 
         private void YarnListButton_Click(object sender, RoutedEventArgs e)

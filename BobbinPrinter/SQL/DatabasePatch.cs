@@ -3,7 +3,7 @@ using System.IO;
 using System.Data.SQLite;
 
 
-namespace BobbinPrinter
+namespace BobbinPrinter.SQL
 {
     class DatabasePatch
     {

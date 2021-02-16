@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BobbinPrinter.Models;
 
-namespace BobbinPrinter
+namespace BobbinPrinter.SQL
 {
     class SQLYarnsizes
     {
