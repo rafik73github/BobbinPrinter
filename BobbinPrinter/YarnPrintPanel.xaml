@@ -24,8 +24,56 @@
             </ComboBox.ItemTemplate>
 
         </ComboBox>
-        <TextBox x:Name="AddYarnLotToPrintTextBox" HorizontalAlignment="Left" Height="30" Margin="357,55,0,0" FontSize="14" TextWrapping="Wrap" VerticalContentAlignment="Center" ToolTip="wpisz lot przędzy" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
-        <TextBox x:Name="AddYarnBobbinAmountToPrintTextBox" HorizontalAlignment="Left" Height="30" Margin="482,55,0,0" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz liczbę szpulek" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
-        <Button x:Name="AddYarnToPrintListButton" Content="DODAJ" HorizontalAlignment="Left" Margin="566,55,0,0" VerticalAlignment="Top" Width="75" Height="30" FontWeight="Bold" Click="AddYarnToPrintListButton_Click"/>
+        <TextBox x:Name="AddYarnLotToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="357,55,0,0" FontSize="14" TextWrapping="Wrap" VerticalContentAlignment="Center" ToolTip="wpisz lot przędzy" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
+        <TextBox x:Name="AddYarnBobbinAmountToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="477,55,0,0" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz liczbę szpulek" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
+        <Button x:Name="AddYarnToPrintListButton" Content="DODAJ" HorizontalAlignment="Left" Margin="555,55,0,0" VerticalAlignment="Top" Width="123" Height="30" FontWeight="Bold" Click="AddYarnToPrintListButton_Click"/>
+        <DataGrid x:Name="YarnsToPrintListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="352" Margin="48,106,158,0" VerticalAlignment="Top" Width="494" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="304" FontSize="14" Header="KOLOR" Binding="{Binding YarnColor}" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Left" />
+                            <Setter Property="Padding" Value="5,0,0,0" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="120" FontSize="14" Header="LOT" Binding="{Binding YarnLot}" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="0,0,5,0" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="64" FontSize="14" Header="SZPULEK" Binding="{Binding YarnBobbinAmount}" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right" />
+                            <Setter Property="Padding" Value="0,0,5,0" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="GenerateAndSavePdfToPrintButton" Content="ZAPISZ PDF" HorizontalAlignment="Left" Margin="589,492,0,0" VerticalAlignment="Top" Width="75" Height="30" FontWeight="Bold" Click="GenerateAndSavePdfToPrintButton_Click"/>
     </Grid>
 </Window>
