@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
 using BobbinPrinter.SQL;
 
 namespace BobbinPrinter
@@ -26,6 +28,11 @@ namespace BobbinPrinter
             new SQLYarntypes().CreateTableYarntypes();
             new SQLYarnsizes().CreateTableYarnsizes();
             new SQLYarns().CreateTableYarns();
+
+            string dbPath = Environment.CurrentDirectory + "\\PRINTS";
+            if (!string.IsNullOrEmpty(dbPath) && !Directory.Exists(dbPath))
+                Directory.CreateDirectory(dbPath);
+
             OpenMainWindow();
         }
 

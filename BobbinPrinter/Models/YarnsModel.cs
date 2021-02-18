@@ -11,6 +11,8 @@
         public int YarnSize { get; set; }
         public string YarnSizeString { get; set; }
         public string YarnColor { get; set; }
+
+        public int YarnBobbinInPackageCount { get; set; }
         public bool YarnArchived { get; set; }
 
         public YarnsModel()
@@ -18,7 +20,7 @@
 
         }
 
-        public YarnsModel (int yarnId, int yarnMaker, string yarnMakerString, int yarnType, string yarnTypeString, int yarnSize, string yarnSizeString, string yarnColor, bool yarnArchived)
+        public YarnsModel (int yarnId, int yarnMaker, string yarnMakerString, int yarnType, string yarnTypeString, int yarnSize, string yarnSizeString, string yarnColor, int yarnBobbinInPackageCount, bool yarnArchived)
         {
             this.YarnId = yarnId;
             this.YarnMaker = yarnMaker;
@@ -28,6 +30,7 @@
             this.YarnSize = yarnSize;
             this.YarnSizeString = yarnSizeString;
             this.YarnColor = yarnColor;
+            this.YarnBobbinInPackageCount = yarnBobbinInPackageCount;
             this.YarnArchived = yarnArchived;
         }
 
@@ -41,12 +44,13 @@
             this.YarnArchived = yarnArchived;
         }
 
-        public YarnsModel(int yarnMaker, int yarnType, int yarnSize, string yarnColor, bool yarnArchived)
+        public YarnsModel(int yarnMaker, int yarnType, int yarnSize, string yarnColor, int yarnBobbinInPackageCount, bool yarnArchived)
         {
             this.YarnMaker = yarnMaker;
             this.YarnType = yarnType;
             this.YarnSize = yarnSize;
             this.YarnColor = yarnColor;
+            this.YarnBobbinInPackageCount = yarnBobbinInPackageCount;
             this.YarnArchived = yarnArchived;
         }
 

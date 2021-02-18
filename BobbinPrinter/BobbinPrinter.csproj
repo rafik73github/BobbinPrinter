@@ -142,6 +142,8 @@
     <Compile Include="Models\YarnsizesModel.cs" />
     <Compile Include="SQL\SQLYarnmakers.cs" />
     <Compile Include="Models\YarntypesModel.cs" />
+    <Compile Include="Tools\FileTools.cs" />
+    <Compile Include="Tools\PdfTools.cs" />
     <Compile Include="Tools\Validate.cs" />
     <Compile Include="YarnList.xaml.cs">
       <DependentUpon>YarnList.xaml</DependentUpon>

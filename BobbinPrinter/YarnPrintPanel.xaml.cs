@@ -2,14 +2,6 @@
 using BobbinPrinter.SQL;
 using BobbinPrinter.Models;
 using BobbinPrinter.Tools;
-using iText.Kernel.Colors;
-using iText.Kernel.Geom;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Borders;
-using iText.Layout.Element;
-using iText.Layout.Properties;
-using TextAlignment = iText.Layout.Properties.TextAlignment;
 using System.Collections.Generic;
 using System;
 
@@ -21,6 +13,7 @@ namespace BobbinPrinter
     public partial class YarnPrintPanel : Window
     {
         List<YarnPrintListModel> yarnPrintListModelList = new List<YarnPrintListModel>();
+        
         public YarnPrintPanel()
         {
             InitializeComponent();
@@ -28,7 +21,8 @@ namespace BobbinPrinter
             SelectYarnToPrintComboBox.ItemsSource = new SQLYarns().GetAllYarns();
             YarnsToPrintListView.ItemsSource = yarnPrintListModelList;
             AddYarnBobbinAmountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatinTextBox;
-
+            AddYarnBobbinInPackageCountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatinTextBox;
+            
         }
 
         
@@ -48,70 +42,40 @@ namespace BobbinPrinter
             {
                 MessageBox.Show("WPISZ LOT PRZĘDZY");
             }
+            else if (AddYarnBobbinInPackageCountToPrintTextBox.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("WPISZ LICZBĘ SZPULEK W PACZCE");
+            }
             else if (AddYarnBobbinAmountToPrintTextBox.Text.Trim().Equals(""))
             {
-                MessageBox.Show("WPISZ LICZBĘ SZPULEK");
+                MessageBox.Show("WPISZ LICZBĘ PACZEK");
+            }
+            else if (AddYarnBobbinAmountToPrintTextBox.Text.Trim().Equals("0"))
+            {
+                MessageBox.Show("WPISZ LICZBĘ SZPULEK WIĘKSZĄ OD ZERA");
             }
             else
             {
                 int addYarnBobbinAmountToPrintTextBoxInt = Convert.ToInt32(AddYarnBobbinAmountToPrintTextBox.Text.Trim());
-                yarnPrintListModelList.Add(new YarnPrintListModel(yarnsModel.YarnColor, addYarnLotToPrintTextBoxString, addYarnBobbinAmountToPrintTextBoxInt, yarnsModel.YarnSizeString));
+                addYarnBobbinAmountToPrintTextBoxInt = addYarnBobbinAmountToPrintTextBoxInt * Convert.ToInt32(AddYarnBobbinInPackageCountToPrintTextBox.Text);
+                yarnPrintListModelList.Add(new YarnPrintListModel(yarnsModel.YarnColor, addYarnLotToPrintTextBoxString, Convert.ToInt32(AddYarnBobbinInPackageCountToPrintTextBox.Text), addYarnBobbinAmountToPrintTextBoxInt, yarnsModel.YarnSizeString));
                 YarnsToPrintListView.ItemsSource = null;
                 YarnsToPrintListView.ItemsSource = yarnPrintListModelList;
                 SelectYarnToPrintComboBox.SelectedItem = null;
                 AddYarnLotToPrintTextBox.Text = "";
                 AddYarnBobbinAmountToPrintTextBox.Text = "";
+                AddYarnBobbinInPackageCountToPrintTextBox.Text = "";
             }
 
         }
 
-        private void GenerateAndSavePdfToPrint(List<YarnPrintListModel> yarnPrintListModelList)
+        
+
+        private void AddYarnToPrintClearListButton_Click(object sender, RoutedEventArgs e)
         {
-            List<YarnPrintListModel> source = yarnPrintListModelList;
-            int listCount = source.Count;
-
-            PdfWriter writer = new PdfWriter("demo.pdf");
-            PdfDocument pdf = new PdfDocument(writer);
-            pdf.SetDefaultPageSize(PageSize.A4);
-            Document document = new Document(pdf);
-            document.SetMargins(48, 24, 48, 24);
-            
-
-
-            Table table = new Table(3, false);
-
-            foreach (var o in source)
-            {
-                
-                for (int i = 0; i < o.YarnBobbinAmount; i++)
-                {
-                    Cell cell = new Cell(1, 1)
-                          .SetBackgroundColor(iText.Kernel.Colors.ColorConstants.WHITE)
-                          .SetBorder(new SolidBorder(ColorConstants.WHITE, 1))
-                          .SetWidth(200)
-                          .SetHeight(26);
-
-                    Paragraph colorName = new Paragraph(o.YarnColor);
-                    colorName.SetTextAlignment(TextAlignment.LEFT);
-                    colorName.SetFontSize(8);
-
-                    Paragraph p = new Paragraph("L: " + o.YarnLot);
-
-                    p.Add(new Tab());
-                    p.AddTabStops(new TabStop(160, TabAlignment.RIGHT));
-                    p.Add(o.YarnSize);
-                    p.SetFontSize(8);
-
-                    cell.Add(colorName);
-                    cell.Add(p);
-
-                    table.AddCell(cell);
-                }
-            }
-
-            document.Add(table);
-            document.Close();
-            //Process.Start("demo.pdf");
+            yarnPrintListModelList.Clear();
+            YarnsToPrintListView.ItemsSource = null;
+            YarnsToPrintListView.ItemsSource = yarnPrintListModelList;
         }
 
         private void GenerateAndSavePdfToPrintButton_Click(object sender, RoutedEventArgs e)
@@ -122,10 +86,13 @@ namespace BobbinPrinter
             }
             else
             {
-                GenerateAndSavePdfToPrint(yarnPrintListModelList);
-                yarnPrintListModelList = null;
-                YarnsToPrintListView.ItemsSource = null;
-                YarnsToPrintListView.ItemsSource = yarnPrintListModelList;
+                if (PdfTools.GenerateAndSavePdfToPrint(yarnPrintListModelList))
+                {
+                    yarnPrintListModelList.Clear();
+                    YarnsToPrintListView.ItemsSource = null;
+                    YarnsToPrintListView.ItemsSource = yarnPrintListModelList;
+                    
+                }
             }
         }
 
@@ -139,6 +106,15 @@ namespace BobbinPrinter
         private void YarnListExitProgramButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void SelectYarnToPrintComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            YarnsModel yarnsModel = SelectYarnToPrintComboBox.SelectedItem as YarnsModel;
+            if (yarnsModel != null)
+            {
+                AddYarnBobbinInPackageCountToPrintTextBox.Text = yarnsModel.YarnBobbinInPackageCount.ToString();
+            }
         }
     }
 }

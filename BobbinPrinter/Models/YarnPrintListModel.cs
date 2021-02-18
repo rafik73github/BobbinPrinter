@@ -6,6 +6,7 @@
         public int PrintListId { get; set; }
         public string YarnColor { get; set; }
         public string YarnLot { get; set; }
+        public int YarnBobbinInPackageCount { get; set; }
         public int YarnBobbinAmount { get; set; }
         public string YarnSize { get; set; }
 
@@ -19,10 +20,11 @@
             this.YarnSize = yarnSize;
         }
 
-        public YarnPrintListModel(string yarnColor, string yarnLot, int yarnBobbinAmount, string yarnSize)
+        public YarnPrintListModel(string yarnColor, string yarnLot, int yarnBobbinInPackageCount, int yarnBobbinAmount, string yarnSize)
         {
             this.YarnColor = yarnColor;
             this.YarnLot = yarnLot;
+            this.YarnBobbinInPackageCount = yarnBobbinInPackageCount;
             this.YarnBobbinAmount = yarnBobbinAmount;
             this.YarnSize = yarnSize;
         }

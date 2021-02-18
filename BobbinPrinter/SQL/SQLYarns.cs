@@ -36,6 +36,7 @@ namespace BobbinPrinter.SQL
             " yarn_type INTEGER," +
             " yarn_size INTEGER," +
             " yarn_color STRING," +
+            " yarn_package_count INTEGER," +
             "yarn_archived BOOLEAN" +
             ")";
             ExecuteQuery(sqlCommand);
@@ -47,14 +48,15 @@ namespace BobbinPrinter.SQL
         {
 
             string sqlCommand = "INSERT INTO yarns" +
-            " (yarn_maker, yarn_type, yarn_size, yarn_color, yarn_archived)" +
+            " (yarn_maker, yarn_type, yarn_size, yarn_color, yarn_package_count, yarn_archived)" +
             " values" +
             " (" +
             yarnsModel.YarnMaker + ", " +
             yarnsModel.YarnType + ", " + 
             yarnsModel.YarnSize + ", " +
-            "'" + yarnsModel.YarnColor + "', "
-            + yarnsModel.YarnArchived +
+            "'" + yarnsModel.YarnColor + "', " +
+            yarnsModel.YarnBobbinInPackageCount + ", " +
+            yarnsModel.YarnArchived +
             ")";
             ExecuteQuery(sqlCommand);
 
@@ -65,16 +67,17 @@ namespace BobbinPrinter.SQL
 
             string sqlCommand = "UPDATE yarns" +
                 " SET " +
-                yarnsModel.YarnMaker + ", " +
-                yarnsModel.YarnType + "' " + 
-                yarnsModel.YarnSize + ", " +
-                " yarn_color = " + "'" + yarnsModel.YarnColor.ToUpper() + "'," +
+                "yarn_maker = " + yarnsModel.YarnMaker + ", " +
+                "yarn_type = " + yarnsModel.YarnType + "' " + 
+                "yarn_size = " + yarnsModel.YarnSize + ", " +
+                "yarn_color = " + "'" + yarnsModel.YarnColor.ToUpper() + "'," +
+                "yarn_package_count = " + yarnsModel.YarnBobbinInPackageCount + ", " +
                 " yarn_archived = " + yarnsModel.YarnArchived +
                 " WHERE yarn_id = " + yarnsModel.YarnId;
             ExecuteQuery(sqlCommand);
         }
 
-        public bool IsYarnExist(int yarnMaker, int yarnType, int yarnSize, string yarnColor)
+        public bool IsYarnExist(int yarnMaker, int yarnType, int yarnSize, string yarnColor, int yarnPackageCount)
         {
             command.CommandText = "SELECT COUNT" +
                 " (*)" +
@@ -83,7 +86,8 @@ namespace BobbinPrinter.SQL
                 " yarn_maker = " + yarnMaker +
                 " AND yarn_type = " + yarnType +
                 " AND yarn_size = " + yarnSize + 
-                " AND yarn_color = " + "'" + yarnColor + "'";
+                " AND yarn_color = " + "'" + yarnColor + "'" +
+                " AND yarn_package_count = " + yarnPackageCount;
 
             int count = Convert.ToInt32(command.ExecuteScalar());
 
@@ -108,6 +112,7 @@ namespace BobbinPrinter.SQL
                 " a.yarn_size AS a_yarn_size," +
                 " d.yarnsize_name AS d_yarnsize_name," +
                 " a.yarn_color AS a_yarn_color," +
+                " a.yarn_package_count AS a_yarn_package_count," +
                 " a.yarn_archived AS a_yarn_archived" +
                 " FROM yarns AS a" +
                 " LEFT JOIN yarnmakers AS b ON a.yarn_maker = b.yarnmaker_id" +
@@ -129,6 +134,7 @@ namespace BobbinPrinter.SQL
                     Convert.ToInt32(reader["a_yarn_size"]),
                     reader["d_yarnsize_name"].ToString(),
                     reader["a_yarn_color"].ToString(),
+                    Convert.ToInt32(reader["a_yarn_package_count"]),
                     Convert.ToBoolean(reader["a_yarn_archived"])));
 
 

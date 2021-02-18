@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BobbinPrinter"
         mc:Ignorable="d"
-        Title="YarnPrintPanel" Height="640" Width="700" Top="100" Left="550" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236">
+        Title="YarnPrintPanel" Height="640" Width="1000" Top="100" Left="550" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -14,20 +14,22 @@
         <Button x:Name="BackToMainMenuButton" Content="WRÓC DO GŁÓWNEGO PANELU" HorizontalAlignment="Center" Height="30" Margin="176,491,176,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="BackToMainMenuButton_Click" FontWeight="Bold"/>
         <Button x:Name="YarnListExitProgramButton" Content="ZAKOŃCZ PROGRAM" HorizontalAlignment="Center" Height="30" Margin="176,543,176,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="YarnListExitProgramButton_Click" FontWeight="Bold"/>
 
-        <ComboBox x:Name="SelectYarnToPrintComboBox" HorizontalAlignment="Center" Height="30" Margin="48,55,348,0" VerticalAlignment="Top" Width="304"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz przędzę do wydruku" FontWeight="Bold">
+        <ComboBox x:Name="SelectYarnToPrintComboBox" HorizontalAlignment="Center" Height="30" Margin="85,117,595,0" VerticalAlignment="Top" Width="320"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz przędzę do wydruku" FontWeight="Bold" SelectionChanged="SelectYarnToPrintComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
-                                    <Run Text="{Binding YarnColor}"/>
+                          <Run Text="{Binding YarnColor}"/>
                     </TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
 
         </ComboBox>
-        <TextBox x:Name="AddYarnLotToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="357,55,0,0" FontSize="14" TextWrapping="Wrap" VerticalContentAlignment="Center" ToolTip="wpisz lot przędzy" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
-        <TextBox x:Name="AddYarnBobbinAmountToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="477,55,0,0" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz liczbę szpulek" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
-        <Button x:Name="AddYarnToPrintListButton" Content="DODAJ" HorizontalAlignment="Left" Margin="555,55,0,0" VerticalAlignment="Top" Width="123" Height="30" FontWeight="Bold" Click="AddYarnToPrintListButton_Click"/>
-        <DataGrid x:Name="YarnsToPrintListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="352" Margin="48,106,158,0" VerticalAlignment="Top" Width="494" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
+        <TextBox x:Name="AddYarnLotToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="410,117,0,0" FontSize="14" TextWrapping="Wrap" VerticalContentAlignment="Center" ToolTip="wpisz lot przędzy" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
+        <TextBox x:Name="AddYarnBobbinAmountToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="660,117,0,0" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz liczbę paczek" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
+        <TextBox x:Name="AddYarnBobbinInPackageCountToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="535,117,0,0" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz liczbę szpulek" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
+        <Button x:Name="AddYarnToPrintListButton" Content="DODAJ" HorizontalAlignment="Left" Margin="794,117,0,0" VerticalAlignment="Top" Width="123" Height="30" FontWeight="Bold" Click="AddYarnToPrintListButton_Click"/>
+        <Button x:Name="AddYarnToPrintClearListButton" Content="WYCZYŚĆ LISTE" HorizontalAlignment="Left" Margin="739,236,0,0" VerticalAlignment="Top" Width="123" Height="30" FontWeight="Bold" Click="AddYarnToPrintClearListButton_Click"/>
+        <DataGrid x:Name="YarnsToPrintListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="291" Margin="85,167,394,0" VerticalAlignment="Top" Width="521" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="304" FontSize="14" Header="KOLOR" Binding="{Binding YarnColor}" >
                     <DataGridTextColumn.HeaderStyle>
@@ -74,6 +76,11 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="GenerateAndSavePdfToPrintButton" Content="ZAPISZ PDF" HorizontalAlignment="Left" Margin="589,492,0,0" VerticalAlignment="Top" Width="75" Height="30" FontWeight="Bold" Click="GenerateAndSavePdfToPrintButton_Click"/>
+        <Button x:Name="GenerateAndSavePdfToPrintButton" Content="GENERUJ PDF" HorizontalAlignment="Left" Margin="739,428,0,0" VerticalAlignment="Top" Width="123" Height="30" FontWeight="Bold" Click="GenerateAndSavePdfToPrintButton_Click"/>
+        <Label x:Name="label" Content="WYBIERZ KOLOR Z LISTY" HorizontalAlignment="Left" Margin="176,83,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label_Copy" Content="WPISZ LOT" HorizontalAlignment="Left" Margin="438,83,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label_Copy1" Content="SZPULEK W PACZCE" HorizontalAlignment="Left" Margin="535,83,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="label_Copy2" Content="PACZEK" HorizontalAlignment="Left" Margin="694,83,0,0" VerticalAlignment="Top" Foreground="White"/>
+
     </Grid>
 </Window>

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using BobbinPrinter.SQL;
 using BobbinPrinter.Models;
+using System;
 
 namespace BobbinPrinter
 {
@@ -117,13 +118,16 @@ namespace BobbinPrinter
 
 
 
-            if (SelectYarnMakerComboBox.SelectedItem == null || SelectYarnTypeComboBox.SelectedItem == null || SelectYarnSizeComboBox.SelectedItem == null || addColorNameTextBoxText.Equals(""))
+            if (SelectYarnMakerComboBox.SelectedItem == null || SelectYarnTypeComboBox.SelectedItem == null 
+                || SelectYarnSizeComboBox.SelectedItem == null 
+                || addColorNameTextBoxText.Equals("")
+                || AddBobbinInPackageTextBox.Text.Trim().Equals(""))
             {
                 MessageBox.Show("UZUPEŁNIJ WSZYSTKIE DANE", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
-                if (new SQLYarns().IsYarnExist(yarnmakersModel.YarnmakerId, yarntypesModel.YarntypeId,yarnsizesModel.YarnsizeId,addColorNameTextBoxText))
+                if (new SQLYarns().IsYarnExist(yarnmakersModel.YarnmakerId, yarntypesModel.YarntypeId,yarnsizesModel.YarnsizeId,addColorNameTextBoxText, Convert.ToInt32(AddBobbinInPackageTextBox.Text)))
                 {
                     MessageBox.Show("TAKA PRZĘDZA\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     AddColorNameTextBox.Text = "";
@@ -132,7 +136,8 @@ namespace BobbinPrinter
                 }
                 else
                 {
-                    new SQLYarns().AddYarn(new YarnsModel(yarnmakersModel.YarnmakerId, yarntypesModel.YarntypeId, yarnsizesModel.YarnsizeId, addColorNameTextBoxText, false));
+                    int addBobbinInPackageTextBoxText = Convert.ToInt32(AddBobbinInPackageTextBox.Text);
+                    new SQLYarns().AddYarn(new YarnsModel(yarnmakersModel.YarnmakerId, yarntypesModel.YarntypeId, yarnsizesModel.YarnsizeId, addColorNameTextBoxText, addBobbinInPackageTextBoxText, false));
                     AddColorNameTextBox.Text = "";
                     YarnsListView.ItemsSource = null;
                     YarnsListView.ItemsSource = new SQLYarns().GetAllYarns();
