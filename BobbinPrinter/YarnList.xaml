@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BobbinPrinter"
         mc:Ignorable="d"
-        Title="YarnList" Height="640" Width="1000" Top="100" Left="550" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236">
+        Title="YarnList" Height="640" Width="1000" Top="100" Left="550" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236" WindowStartupLocation="CenterScreen">
     <Grid Height="609" VerticalAlignment="Bottom">
         <Grid.ColumnDefinitions>
 
@@ -18,7 +18,7 @@
         <Button x:Name="YarnListExitProgramButton" Content="ZAKOŃCZ PROGRAM" HorizontalAlignment="Center" Height="30" Margin="0,543,0,5" VerticalAlignment="Top" Width="348" FontSize="14" Click="YarnListExitProgramButton_Click" Grid.Column="1" FontWeight="Bold"/>
 
 
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="484" Margin="10,-8,0,0" VerticalAlignment="Top" Width="980" Background="#FF362236" BorderBrush="#FF362236" >
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="484" Margin="7,-8,0,0" VerticalAlignment="Top" Width="980" Background="#FF362236" BorderBrush="#FF362236" >
 
             <TabControl.Resources>
                 <Style TargetType="TabItem">
@@ -54,7 +54,7 @@
             <TabItem Header="LISTA PRZĘDZ" BorderBrush="#FFACACAC" >
                 <Grid>
                     <GroupBox x:Name="groupBox2" Header="LISTA PRZĘDZ" HorizontalAlignment="Center" Height="436" Margin="25,10,21,0" VerticalAlignment="Top" Width="928" FontSize="14" FontWeight="Bold" Foreground="DarkOrange">
-                        <DataGrid x:Name="YarnsListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="352" Margin="83,53,90,0" VerticalAlignment="Top" Width="743" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
+                        <DataGrid x:Name="YarnsListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="352" Margin="74,53,76,0" VerticalAlignment="Top" Width="766" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="228" FontSize="14" Header="KOLOR" Binding="{Binding YarnColor}" >
                                     <DataGridTextColumn.HeaderStyle>
@@ -137,12 +137,18 @@
 
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="32*"/>
-                        <ColumnDefinition Width="371*"/>
-                        <ColumnDefinition Width="271*"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox x:Name="groupBox" Header="DODAWANIE PRZĘDZ" HorizontalAlignment="Center" Height="436" Margin="117,10,149,0" VerticalAlignment="Top" Width="376" Foreground="DarkOrange" BorderBrush="White" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <ComboBox x:Name="SelectYarnMakerComboBox" HorizontalAlignment="Center" Height="30" Margin="131,46,163,0" VerticalAlignment="Top" Width="348"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz producenta przędzy" Grid.ColumnSpan="2" Grid.Column="1">
+                    
+                    <GroupBox x:Name="groupBox" Header="DODAWANIE PRZĘDZ" HorizontalAlignment="Center" Height="436" Margin="19,10,10,0" VerticalAlignment="Top" Width="945" Foreground="DarkOrange" BorderBrush="White" FontSize="14" FontWeight="Bold">
+                        
+                    </GroupBox>
+                    <Label x:Name="label_Copy1" Content="WYBIERZ PRODUCENTA PRZĘDZY" HorizontalAlignment="Left" Margin="120,70,0,0" VerticalAlignment="Top" FontSize="12" Foreground="White"/>
+                    <Label x:Name="label_Copy2" Content="WYBIERZ TYP PRZĘDZY" HorizontalAlignment="Left" Margin="120,130,0,0" VerticalAlignment="Top" FontSize="12" Foreground="White"/>
+                    <Label x:Name="label_Copy" Content="WYBIERZ GRUBOŚĆ PRZĘDZY" HorizontalAlignment="Left" Margin="120,190,0,0" VerticalAlignment="Top" FontSize="12" Foreground="White"/>
+                    <Label x:Name="label_Copy3" Content="WPROWADŹ NAZWĘ PRZĘDZY" HorizontalAlignment="Left" Margin="120,250,0,0" VerticalAlignment="Top" FontSize="12" Foreground="White"/>
+                    <Label x:Name="label_Copy4" Content="WPROWADŹ LICZBĘ SZPULEK W PACZCE" HorizontalAlignment="Left" Margin="120,310,0,0" VerticalAlignment="Top" FontSize="12" Foreground="White"/>
+                    <ComboBox x:Name="SelectYarnMakerComboBox" HorizontalAlignment="Center" Height="30" Margin="391,70,235,0" VerticalAlignment="Top" Width="348"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz producenta przędzy">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock>
@@ -151,7 +157,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <ComboBox x:Name="SelectYarnTypeComboBox" HorizontalAlignment="Center" Height="30" Margin="131,99,163,0" VerticalAlignment="Top" Width="348"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz typ przędzy" Grid.ColumnSpan="2" Grid.Column="1">
+                    <ComboBox x:Name="SelectYarnTypeComboBox" HorizontalAlignment="Center" Height="30" Margin="391,130,235,0" VerticalAlignment="Top" Width="348"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz typ przędzy">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock>
@@ -160,7 +166,7 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <ComboBox x:Name="SelectYarnSizeComboBox" HorizontalAlignment="Center" Height="30" Margin="131,151,163,0" VerticalAlignment="Top" Width="348"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz grubość przędzy" Grid.ColumnSpan="2" Grid.Column="1">
+                    <ComboBox x:Name="SelectYarnSizeComboBox" HorizontalAlignment="Center" Height="30" Margin="391,190,235,0" VerticalAlignment="Top" Width="348"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz grubość przędzy">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock>
@@ -169,9 +175,10 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <TextBox x:Name="AddColorNameTextBox" HorizontalAlignment="Center" Height="30" Margin="131,207,163,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz kolor przędzy" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <TextBox x:Name="AddBobbinInPackageTextBox" HorizontalAlignment="Center" Height="30" Margin="131,263,163,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz ilość szpulek w paczce/kartonie" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <Button x:Name="AddYarnButton" Content="DODAJ PRZĘDZĘ" HorizontalAlignment="Center" Height="30" Margin="131,392,163,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddYarnButton_Click" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <TextBox x:Name="AddColorNameTextBox" HorizontalAlignment="Center" Height="30" Margin="391,250,235,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz kolor przędzy"/>
+                    <TextBox x:Name="AddBobbinInPackageTextBox" HorizontalAlignment="Center" Height="30" Margin="391,310,235,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz ilość szpulek w paczce/kartonie"/>
+                    <Button x:Name="AddYarnButton" Content="DODAJ PRZĘDZĘ" HorizontalAlignment="Center" Height="30" Margin="391,372,235,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddYarnButton_Click"/>
+                    
                 </Grid>
 
             </TabItem>

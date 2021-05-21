@@ -30,11 +30,14 @@ namespace BobbinPrinter.Tools
                 PdfWriter writer = new PdfWriter(PDF_FILE_NAME);
                 PdfDocument pdf = new PdfDocument(writer);
                 pdf.SetDefaultPageSize(PageSize.A4);
+                
                 Document document = new Document(pdf);
-                document.SetMargins(48, 24, 48, 24);
+                document.SetMargins(36, 24, 36, 24);
+                
                 string fontProgram = @"C:\Windows\Fonts\Arial.ttf";
 
                 PdfFont font = PdfFontFactory.CreateFont(fontProgram, PdfEncodings.IDENTITY_H, true);
+                
                 document.SetFont(font);
 
 
@@ -47,24 +50,54 @@ namespace BobbinPrinter.Tools
                     {
                         Cell cell = new Cell(1, 1)
                               .SetBackgroundColor(ColorConstants.WHITE)
-                              .SetBorder(new SolidBorder(ColorConstants.WHITE, 1))
+                              .SetBorder(new DottedBorder(ColorConstants.LIGHT_GRAY, 1))
                               .SetWidth(200)
-                              .SetHeight(26);
+                              .SetHeight(31);
 
                         Paragraph colorName = new Paragraph(o.YarnColor);
-                        colorName.SetTextAlignment(TextAlignment.LEFT);
-                        colorName.SetFontSize(8);
+                        Paragraph yarnLot = new Paragraph(o.YarnLot);
 
-                        Paragraph p = new Paragraph("L: " + o.YarnLot);
+                        if (o.YarnMaker.Equals("SKRĘTKA"))
+                            {
 
-                        p.Add(new Tab());
-                        p.AddTabStops(new TabStop(160, TabAlignment.RIGHT));
-                        p.Add(o.YarnSize);
-                        p.SetFontSize(8);
+                            colorName.SetTextAlignment(TextAlignment.LEFT);
+                            colorName.SetFontSize(9);
+                            colorName.SetPaddings(0, 0, 0, 0);
+                            colorName.SetMargins(0, 0, 0, 0);
+                            colorName.SetBorder(new SolidBorder(ColorConstants.WHITE, 0));
+                            colorName.SetHeight(12);
 
+                            yarnLot.SetTextAlignment(TextAlignment.LEFT);
+                            yarnLot.SetFontSize(12);
+                            yarnLot.SetPaddings(0, 0, 0, 0);
+                            yarnLot.SetMargins(0, 0, 0, 0);
+                            yarnLot.SetBorder(new SolidBorder(ColorConstants.WHITE, 0));
+                            yarnLot.SetHeight(16);
+                        }
+                        else
+                        {
+                            colorName.SetTextAlignment(TextAlignment.LEFT);
+                            colorName.SetFontSize(10);
+                            colorName.SetPaddings(0, 0, 0, 0);
+                            colorName.SetMargins(0, 0, 0, 0);
+                            colorName.SetBorder(new SolidBorder(ColorConstants.WHITE, 0));
+                            colorName.SetHeight(14);
+
+                            yarnLot.Add(new Tab());
+                            yarnLot.AddTabStops(new TabStop(160, TabAlignment.RIGHT));
+                            yarnLot.Add(o.YarnSize);
+                            yarnLot.SetFontSize(10);
+                            yarnLot.SetPaddings(0, 0, 0, 0);
+                            yarnLot.SetMargins(0, 0, 0, 0);
+                            yarnLot.SetBorder(new SolidBorder(ColorConstants.WHITE, 0));
+                            yarnLot.SetHeight(14);
+                        }
+
+                        cell.SetPaddings(0, 0, 0, 0);
                         cell.Add(colorName);
-                        cell.Add(p);
+                        cell.Add(yarnLot);
 
+                        table.SetPaddings(0, 0, 0, 0);
                         table.AddCell(cell);
                     }
                 }

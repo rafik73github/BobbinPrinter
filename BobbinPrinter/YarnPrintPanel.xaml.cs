@@ -22,7 +22,10 @@ namespace BobbinPrinter
             YarnsToPrintListView.ItemsSource = yarnPrintListModelList;
             AddYarnBobbinAmountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatinTextBox;
             AddYarnBobbinInPackageCountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatinTextBox;
-            
+
+            SelectYarnToPrintComboBox.Focus();
+
+
         }
 
         
@@ -58,13 +61,20 @@ namespace BobbinPrinter
             {
                 int addYarnBobbinAmountToPrintTextBoxInt = Convert.ToInt32(AddYarnBobbinAmountToPrintTextBox.Text.Trim());
                 addYarnBobbinAmountToPrintTextBoxInt = addYarnBobbinAmountToPrintTextBoxInt * Convert.ToInt32(AddYarnBobbinInPackageCountToPrintTextBox.Text);
-                yarnPrintListModelList.Add(new YarnPrintListModel(yarnsModel.YarnColor, addYarnLotToPrintTextBoxString, Convert.ToInt32(AddYarnBobbinInPackageCountToPrintTextBox.Text), addYarnBobbinAmountToPrintTextBoxInt, yarnsModel.YarnSizeString));
+                yarnPrintListModelList.Add(new YarnPrintListModel(yarnsModel.YarnColor,
+                    addYarnLotToPrintTextBoxString,
+                    Convert.ToInt32(AddYarnBobbinInPackageCountToPrintTextBox.Text),
+                    addYarnBobbinAmountToPrintTextBoxInt,
+                    yarnsModel.YarnSizeString,
+                    yarnsModel.YarnMakerString
+                    ));
                 YarnsToPrintListView.ItemsSource = null;
                 YarnsToPrintListView.ItemsSource = yarnPrintListModelList;
                 SelectYarnToPrintComboBox.SelectedItem = null;
                 AddYarnLotToPrintTextBox.Text = "";
                 AddYarnBobbinAmountToPrintTextBox.Text = "";
                 AddYarnBobbinInPackageCountToPrintTextBox.Text = "";
+                SelectYarnToPrintComboBox.Focus();
             }
 
         }

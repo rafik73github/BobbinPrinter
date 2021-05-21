@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BobbinPrinter"
         mc:Ignorable="d"
-        Title="BobbinPrinter" Height="450" Width="355" ResizeMode="NoResize" Margin="0" Left="600" Top="200" WindowStyle="None" Background="#FF362236">
+        Title="BobbinPrinter" Height="450" Width="355" ResizeMode="NoResize" Margin="0" Left="600" Top="200" WindowStyle="None" Background="#FF362236" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="AddPrintButton" Content="DRUKOWANIE ETYKIET" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,82,0,0" Height="30" FontSize="14" Click="AddPrintButton_Click" FontWeight="Bold"/>
         <Button x:Name="YarnListButton" Content="LISTA PRZĘDZ" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,132,0,0" Height="30" FontSize="14" Click="YarnListButton_Click" FontWeight="Bold"/>
