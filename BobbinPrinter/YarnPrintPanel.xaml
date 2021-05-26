@@ -5,18 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BobbinPrinter"
         mc:Ignorable="d"
-        Title="YarnPrintPanel" Height="640" Width="1000" Top="100" Left="550" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236" WindowStartupLocation="CenterScreen">
+        Title="YarnPrintPanel" Height="525" Width="900"  ResizeMode="NoResize" WindowStyle="None" Background="#ffffff" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <GroupBox x:Name="groupBox" Header="DRUKOWANIE ETYKIET" HorizontalAlignment="Center" Height="436" Margin="32,10,23,0" VerticalAlignment="Top" Width="945" Foreground="DarkOrange" BorderBrush="White" FontSize="14" FontWeight="Bold">
+        <GroupBox x:Name="groupBox" Header="DRUKOWANIE ETYKIET" HorizontalAlignment="Center" Height="375" Margin="10,10,16,0" VerticalAlignment="Top" Width="874" Foreground="#FF08599C" BorderBrush="SteelBlue" FontSize="14" FontWeight="Bold">
 
         </GroupBox>
-        <Button x:Name="BackToMainMenuButton" Content="WRÓC DO GŁÓWNEGO PANELU" HorizontalAlignment="Center" Height="30" Margin="176,491,176,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="BackToMainMenuButton_Click" FontWeight="Bold"/>
-        <Button x:Name="YarnListExitProgramButton" Content="ZAKOŃCZ PROGRAM" HorizontalAlignment="Center" Height="30" Margin="176,543,176,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="YarnListExitProgramButton_Click" FontWeight="Bold"/>
-
-        <ComboBox x:Name="SelectYarnToPrintComboBox" HorizontalAlignment="Center" Height="30" Margin="605,170,75,0" VerticalAlignment="Top" Width="320"  VerticalContentAlignment="Center" FontSize="14" ToolTip="wybierz przędzę do wydruku" FontWeight="Bold" SelectionChanged="SelectYarnToPrintComboBox_SelectionChanged">
+        
+        <ComboBox x:Name="SelectYarnToPrintComboBox" Style="{StaticResource ComboBoxFlatStyle}" HorizontalAlignment="Center" Height="30" Margin="630,41,50,0" VerticalAlignment="Top" Width="220"  VerticalContentAlignment="Center" ToolTip="wybierz przędzę do wydruku" FontWeight="Bold" SelectionChanged="SelectYarnToPrintComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -26,24 +24,33 @@
             </ComboBox.ItemTemplate>
 
         </ComboBox>
-        <TextBox x:Name="AddYarnLotToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="605,249,0,0" FontSize="14" TextWrapping="Wrap" VerticalContentAlignment="Center" ToolTip="wpisz lot przędzy" VerticalAlignment="Top" Width="320" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
-        <TextBox x:Name="AddYarnBobbinAmountToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="605,327,0,0" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz liczbę paczek" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"/>
-        <TextBox x:Name="AddYarnBobbinInPackageCountToPrintTextBox" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="605,90,0,0" FontSize="14" VerticalContentAlignment="Center" ToolTip="liczba szpulek w paczce" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" RenderTransformOrigin="0.292,0.609" FontWeight="Bold" IsTabStop="False"/>
-        <Button x:Name="AddYarnToPrintListButton" Content="DODAJ" HorizontalAlignment="Left" Margin="605,395,0,0" VerticalAlignment="Top" Width="320" Height="30" FontWeight="Bold" Click="AddYarnToPrintListButton_Click"/>
-        <Button x:Name="AddYarnToPrintClearListButton" Content="WYCZYŚĆ LISTE" HorizontalAlignment="Left" Margin="64,395,0,0" VerticalAlignment="Top" Width="123" Height="30" FontWeight="Bold" Click="AddYarnToPrintClearListButton_Click"/>
-        <DataGrid x:Name="YarnsToPrintListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="316" Margin="64,41,415,0" VerticalAlignment="Top" Width="521" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
+        <Label x:Name="label" Content="WYBIERZ KOLOR Z LISTY" FontWeight="Bold" HorizontalAlignment="Left" Margin="472,41,0,0" VerticalAlignment="Top" Foreground="#FF434446" RenderTransformOrigin="0.807,0.462"/>
+        <Label x:Name="label_Copy" Content="WPISZ LOT" FontWeight="Bold" HorizontalAlignment="Left" Margin="472,92,0,0" VerticalAlignment="Top" Foreground="#FF434446"/>
+        <Label x:Name="label_Copy1" Content="SZPULEK W PACZCE" FontWeight="Bold" HorizontalAlignment="Left" Margin="472,196,0,0" VerticalAlignment="Top" Foreground="#FF434446"/>
+        <Label x:Name="label_Copy2" Content="PACZEK" FontWeight="Bold" HorizontalAlignment="Left" Margin="472,144,0,0" VerticalAlignment="Top" Foreground="#FF434446"/>
+        <TextBox x:Name="AddYarnLotToPrintTextBox" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="630,92,0,0" TextWrapping="Wrap" VerticalContentAlignment="Center" ToolTip="wpisz lot przędzy" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.292,0.609" FontWeight="Bold" KeyDown="AddYarnLotToPrintTextBox_OnKeyDownHandler"/>
+        <TextBox x:Name="AddYarnBobbinAmountToPrintTextBox" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="630,144,0,0" VerticalContentAlignment="Center" ToolTip="wpisz liczbę paczek" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"  KeyDown="AddYarnBobbinAmountToPrintTextBox_OnKeyDownHandler"/>
+        <TextBox x:Name="AddYarnBobbinInPackageCountToPrintTextBox" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="630,196,0,0" VerticalContentAlignment="Center" ToolTip="liczba szpulek w paczce" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.292,0.609" FontWeight="Bold" IsTabStop="False"/>
+        <Button x:Name="AddYarnToPrintListButton" Style="{StaticResource MyButton}" Content="DODAJ DO LISTY" Margin="730,277,50,168" Width="120" Height="80" Click="AddYarnToPrintListButton_Click"/>
+        <Button x:Name="AddYarnToPrintClearListButton" Style="{StaticResource MyButton}" Content="WYCZYŚĆ LISTĘ" Margin="472,277,308,168" Width="120" Height="80" Click="AddYarnToPrintClearListButton_Click"/>
+        <Button x:Name="GenerateAndSavePdfToPrintButton" Style="{StaticResource MyButton}" Content="GENERUJ PDF"  Margin="730,412,50,33"  Width="120" Height="80" Click="GenerateAndSavePdfToPrintButton_Click"/>
+        <Button x:Name="BackToMainMenuButton" Style="{StaticResource MyButton}" Content="WRÓC DO GŁÓWNEGO PANELU" Height="80" Margin="163,412,617,33" Width="120" Click="BackToMainMenuButton_Click" />
+        <Button x:Name="YarnListExitProgramButton" Style="{StaticResource MyButton}" Content="ZAKOŃCZ PROGRAM" Height="80" Margin="22,412,758,33" Width="120" Click="YarnListExitProgramButton_Click" />
+        <DataGrid x:Name="YarnsToPrintListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="316" Margin="35,41,455,0" VerticalAlignment="Top" Width="410" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="304" FontSize="14" Header="KOLOR" Binding="{Binding YarnColor}" >
+                <DataGridTextColumn Width="220" FontSize="14" Header="KOLOR" Binding="{Binding YarnColor}" >
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="Foreground" Value="#FF434446"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Left" />
                             <Setter Property="Padding" Value="5,0,0,0" />
+                            <Setter Property="Foreground" Value="#FF434446"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -52,12 +59,14 @@
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="Foreground" Value="#FF434446"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Right" />
                             <Setter Property="Padding" Value="0,0,5,0" />
+                            <Setter Property="Foreground" Value="#FF434446"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
@@ -66,23 +75,22 @@
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                             <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="Foreground" Value="#FF434446"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
-                            <Setter Property="TextAlignment" Value="Right" />
+                            <Setter Property="TextAlignment" Value="Center" />
                             <Setter Property="Padding" Value="0,0,5,0" />
+                            <Setter Property="Foreground" Value="#FF434446"/>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="GenerateAndSavePdfToPrintButton" Content="GENERUJ PDF" HorizontalAlignment="Left" Margin="802,492,0,0" VerticalAlignment="Top" Width="123" Height="81" FontWeight="Bold" Click="GenerateAndSavePdfToPrintButton_Click"/>
-        <Label x:Name="label" Content="WYBIERZ KOLOR Z LISTY" HorizontalAlignment="Left" Margin="605,139,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.807,0.462"/>
-        <Label x:Name="label_Copy" Content="WPISZ LOT" HorizontalAlignment="Left" Margin="605,218,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="label_Copy1" Content="SZPULEK W PACZCE (WYBIERZ NAJPIERW KOLOR Z LISTY)" HorizontalAlignment="Left" Margin="605,59,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="label_Copy2" Content="PACZEK" HorizontalAlignment="Left" Margin="605,296,0,0" VerticalAlignment="Top" Foreground="White"/>
+        
+        
 
     </Grid>
 </Window>

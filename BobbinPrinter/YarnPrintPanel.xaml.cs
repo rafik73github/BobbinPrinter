@@ -4,6 +4,7 @@ using BobbinPrinter.Models;
 using BobbinPrinter.Tools;
 using System.Collections.Generic;
 using System;
+using System.Windows.Input;
 
 namespace BobbinPrinter
 {
@@ -124,6 +125,23 @@ namespace BobbinPrinter
             if (yarnsModel != null)
             {
                 AddYarnBobbinInPackageCountToPrintTextBox.Text = yarnsModel.YarnBobbinInPackageCount.ToString();
+            }
+            AddYarnLotToPrintTextBox.Focus();
+        }
+
+        private void AddYarnLotToPrintTextBox_OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                AddYarnBobbinAmountToPrintTextBox.Focus();
+            }
+        }
+
+        private void AddYarnBobbinAmountToPrintTextBox_OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                AddYarnToPrintListButton.Focus();
             }
         }
     }

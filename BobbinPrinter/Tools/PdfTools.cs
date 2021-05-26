@@ -56,10 +56,12 @@ namespace BobbinPrinter.Tools
 
                         Paragraph colorName = new Paragraph(o.YarnColor);
                         Paragraph yarnLot = new Paragraph(o.YarnLot);
+                        colorName.SetFirstLineIndent(3);
+                        yarnLot.SetFirstLineIndent(3);
 
                         if (o.YarnMaker.Equals("SKRĘTKA"))
                             {
-
+                            
                             colorName.SetTextAlignment(TextAlignment.LEFT);
                             colorName.SetFontSize(9);
                             colorName.SetPaddings(0, 0, 0, 0);

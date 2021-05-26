@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BobbinPrinter"
         mc:Ignorable="d"
-        Title="BobbinPrinter" Height="450" Width="355" ResizeMode="NoResize" Margin="0" Left="600" Top="200" WindowStyle="None" Background="#FF362236" WindowStartupLocation="CenterScreen">
+        Title="BobbinPrinter" Height="244" Width="500" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="AddPrintButton" Content="DRUKOWANIE ETYKIET" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,82,0,0" Height="30" FontSize="14" Click="AddPrintButton_Click" FontWeight="Bold"/>
-        <Button x:Name="YarnListButton" Content="LISTA PRZĘDZ" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,132,0,0" Height="30" FontSize="14" Click="YarnListButton_Click" FontWeight="Bold"/>
-        <Button x:Name="MainMenuExitButton" Content="ZAMKNIJ" HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Margin="0,332,0,0" Height="30" FontSize="14" Click="MainMenuExitButton_Click" FontWeight="Bold"/>
+        <Button x:Name="AddPrintButton" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Margin="195,91,185,0" Height="80" FontSize="14" Click="AddPrintButton_Click" FontWeight="Bold">
+            <TextBlock Text="DRUKOWANIE ETYKIET" TextWrapping="Wrap" FontSize="12" TextAlignment="Center"/>
+        </Button>
+        <Button x:Name="YarnListButton" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Margin="356,91,24,0" Height="80" FontSize="14" Click="YarnListButton_Click" FontWeight="Bold">
+            <TextBlock Text="LISTA PRZĘDZ" TextWrapping="Wrap" FontSize="12" TextAlignment="Center"/>
+        </Button>
+        <Button x:Name="MainMenuExitButton" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Margin="28,91,352,0" Height="80" FontSize="14" Click="MainMenuExitButton_Click" FontWeight="Bold">
+            <TextBlock Text="ZAKOŃCZ PROGRAM" TextWrapping="Wrap" FontSize="12" TextAlignment="Center" Foreground="Crimson"/>
+        </Button>
         <Label x:Name="label" Content="PANEL GŁÓWNY" HorizontalAlignment="Center" Height="30" Margin="17,24,17,0" VerticalAlignment="Top" Width="315" FontSize="16" HorizontalContentAlignment="Center" Foreground="DarkOrange" FontWeight="Bold"/>
 
     </Grid>

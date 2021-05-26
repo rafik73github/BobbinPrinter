@@ -14,8 +14,12 @@
         </Grid.ColumnDefinitions>
 
 
-        <Button x:Name="BackToMainMenuButton" Content="WRÓC DO GŁÓWNEGO PANELU" HorizontalAlignment="Center" Height="30" Margin="0,491,0,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="BackToMainMenuButton_Click" Grid.Column="1" FontWeight="Bold"/>
-        <Button x:Name="YarnListExitProgramButton" Content="ZAKOŃCZ PROGRAM" HorizontalAlignment="Center" Height="30" Margin="0,543,0,5" VerticalAlignment="Top" Width="348" FontSize="14" Click="YarnListExitProgramButton_Click" Grid.Column="1" FontWeight="Bold"/>
+        <Button x:Name="BackToMainMenuButton" Padding="5" HorizontalAlignment="Center" Height="80" Margin="439,498,441,0" VerticalAlignment="Top" Width="120" Click="BackToMainMenuButton_Click" FontWeight="Bold">
+            <TextBlock Text="WRÓC DO GŁÓWNEGO PANELU" TextWrapping="Wrap" FontSize="12" TextAlignment="Center"/>
+        </Button>
+        <Button x:Name="YarnListExitProgramButton" Padding="5" HorizontalAlignment="Center" Height="80" Margin="44,498,836,0" VerticalAlignment="Top" Width="120" Click="YarnListExitProgramButton_Click" FontWeight="Bold">
+            <TextBlock Text="ZAKOŃCZ PROGRAM" TextWrapping="Wrap" FontSize="12" TextAlignment="Center" Foreground="Crimson"/>
+        </Button>
 
 
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="484" Margin="7,-8,0,0" VerticalAlignment="Top" Width="980" Background="#FF362236" BorderBrush="#FF362236" >
@@ -54,9 +58,9 @@
             <TabItem Header="LISTA PRZĘDZ" BorderBrush="#FFACACAC" >
                 <Grid>
                     <GroupBox x:Name="groupBox2" Header="LISTA PRZĘDZ" HorizontalAlignment="Center" Height="436" Margin="25,10,21,0" VerticalAlignment="Top" Width="928" FontSize="14" FontWeight="Bold" Foreground="DarkOrange">
-                        <DataGrid x:Name="YarnsListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="352" Margin="74,53,76,0" VerticalAlignment="Top" Width="766" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
+                        <DataGrid x:Name="YarnsListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="352" Margin="74,53,76,0" VerticalAlignment="Top" Width="766" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True" FontSize="12">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="228" FontSize="14" Header="KOLOR" Binding="{Binding YarnColor}" >
+                                <DataGridTextColumn Width="228" FontSize="12" Header="KOLOR" Binding="{Binding YarnColor}" >
                                     <DataGridTextColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
                                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -70,7 +74,7 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Width="100" FontSize="14" Header="GRUBOŚĆ" Binding="{Binding YarnSizeString}" >
+                                <DataGridTextColumn Width="100" FontSize="12" Header="GRUBOŚĆ" Binding="{Binding YarnSizeString}" >
                                     <DataGridTextColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
                                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -84,7 +88,7 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Width="100" FontSize="14" Header="TYP" Binding="{Binding YarnTypeString}" >
+                                <DataGridTextColumn Width="100" FontSize="12" Header="TYP" Binding="{Binding YarnTypeString}" >
                                     <DataGridTextColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
                                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -98,7 +102,7 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Width="150" FontSize="14" Header="PRODUCENT" Binding="{Binding YarnMakerString}" >
+                                <DataGridTextColumn Width="150" FontSize="12" Header="PRODUCENT" Binding="{Binding YarnMakerString}" >
                                     <DataGridTextColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
                                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -112,7 +116,7 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Width="150" FontSize="14" Header="SZPULEK W PACZCE" Binding="{Binding YarnBobbinInPackageCount}" >
+                                <DataGridTextColumn Width="150" FontSize="12" Header="SZPULEK W PACZCE" Binding="{Binding YarnBobbinInPackageCount}" >
                                     <DataGridTextColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
                                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -139,9 +143,9 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <GroupBox x:Name="groupBox" Header="DODAWANIE PRZĘDZ" HorizontalAlignment="Center" Height="436" Margin="19,10,10,0" VerticalAlignment="Top" Width="945" Foreground="DarkOrange" BorderBrush="White" FontSize="14" FontWeight="Bold">
-                        
+
                     </GroupBox>
                     <Label x:Name="label_Copy1" Content="WYBIERZ PRODUCENTA PRZĘDZY" HorizontalAlignment="Left" Margin="120,70,0,0" VerticalAlignment="Top" FontSize="12" Foreground="White"/>
                     <Label x:Name="label_Copy2" Content="WYBIERZ TYP PRZĘDZY" HorizontalAlignment="Left" Margin="120,130,0,0" VerticalAlignment="Top" FontSize="12" Foreground="White"/>
@@ -178,7 +182,7 @@
                     <TextBox x:Name="AddColorNameTextBox" HorizontalAlignment="Center" Height="30" Margin="391,250,235,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz kolor przędzy"/>
                     <TextBox x:Name="AddBobbinInPackageTextBox" HorizontalAlignment="Center" Height="30" Margin="391,310,235,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" FontSize="14" VerticalContentAlignment="Center" ToolTip="wpisz ilość szpulek w paczce/kartonie"/>
                     <Button x:Name="AddYarnButton" Content="DODAJ PRZĘDZĘ" HorizontalAlignment="Center" Height="30" Margin="391,372,235,0" VerticalAlignment="Top" Width="348" FontSize="14" Click="AddYarnButton_Click"/>
-                    
+
                 </Grid>
 
             </TabItem>
