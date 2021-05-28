@@ -5,18 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BobbinPrinter"
         mc:Ignorable="d"
-        Title="BobbinPrinter" Height="244" Width="500" ResizeMode="NoResize" WindowStyle="None" Background="#FF362236" WindowStartupLocation="CenterScreen">
+        Title="BobbinPrinter" Height="244" Width="500" ResizeMode="NoResize" WindowStyle="None" Background="White" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="AddPrintButton" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Margin="195,91,185,0" Height="80" FontSize="14" Click="AddPrintButton_Click" FontWeight="Bold">
-            <TextBlock Text="DRUKOWANIE ETYKIET" TextWrapping="Wrap" FontSize="12" TextAlignment="Center"/>
+
+        <Button x:Name="AddPrintButton" Style="{StaticResource MyButton}"  Margin="194,91,186,73" Width="120" Height="80" Click="AddPrintButton_Click">
+            <TextBlock Style="{StaticResource TextBlockWrapped}">
+                DRUKOWANIE ETYKIET
+            </TextBlock>
         </Button>
-        <Button x:Name="YarnListButton" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Margin="356,91,24,0" Height="80" FontSize="14" Click="YarnListButton_Click" FontWeight="Bold">
-            <TextBlock Text="LISTA PRZĘDZ" TextWrapping="Wrap" FontSize="12" TextAlignment="Center"/>
+        <Button x:Name="YarnListButton" Style="{StaticResource MyButton}" Margin="353,91,27,73" Width="120" Height="80" Click="YarnListButton_Click">
+            <TextBlock Style="{StaticResource TextBlockWrapped}">
+                LISTA PRZĘDZ
+            </TextBlock>
         </Button>
-        <Button x:Name="MainMenuExitButton" Padding="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Margin="28,91,352,0" Height="80" FontSize="14" Click="MainMenuExitButton_Click" FontWeight="Bold">
-            <TextBlock Text="ZAKOŃCZ PROGRAM" TextWrapping="Wrap" FontSize="12" TextAlignment="Center" Foreground="Crimson"/>
+        <Button x:Name="MainMenuExitButton" Style="{StaticResource MyButtonRed}" Margin="34,91,346,73" Width="120" Height="80" Click="MainMenuExitButton_Click">
+            <TextBlock Style="{StaticResource TextBlockWrapped}">
+                ZAKOŃCZ PROGRAM
+            </TextBlock>
         </Button>
-        <Label x:Name="label" Content="PANEL GŁÓWNY" HorizontalAlignment="Center" Height="30" Margin="17,24,17,0" VerticalAlignment="Top" Width="315" FontSize="16" HorizontalContentAlignment="Center" Foreground="DarkOrange" FontWeight="Bold"/>
+        <Label x:Name="label" Content="PANEL GŁÓWNY" HorizontalAlignment="Center" Height="30" Margin="17,24,17,0" VerticalAlignment="Top" Width="315" FontSize="16" HorizontalContentAlignment="Center" Foreground="#FF08599C" FontWeight="Bold"/>
 
     </Grid>
 </Window>

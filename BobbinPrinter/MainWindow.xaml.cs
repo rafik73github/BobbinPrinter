@@ -11,6 +11,7 @@ namespace BobbinPrinter
         public MainWindow()
         {
             InitializeComponent();
+            AddPrintButton.Focus();
         }
 
         private void AddPrintButton_Click(object sender, RoutedEventArgs e)

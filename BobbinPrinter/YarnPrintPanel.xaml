@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BobbinPrinter"
         mc:Ignorable="d"
-        Title="YarnPrintPanel" Height="525" Width="900"  ResizeMode="NoResize" WindowStyle="None" Background="#ffffff" WindowStartupLocation="CenterScreen">
+        Title="YarnPrintPanel" Height="525" Width="900"  ResizeMode="NoResize" WindowStyle="None" Background="White" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -31,11 +31,31 @@
         <TextBox x:Name="AddYarnLotToPrintTextBox" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="630,92,0,0" TextWrapping="Wrap" VerticalContentAlignment="Center" ToolTip="wpisz lot przędzy" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.292,0.609" FontWeight="Bold" KeyDown="AddYarnLotToPrintTextBox_OnKeyDownHandler"/>
         <TextBox x:Name="AddYarnBobbinAmountToPrintTextBox" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="630,144,0,0" VerticalContentAlignment="Center" ToolTip="wpisz liczbę paczek" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" RenderTransformOrigin="0.292,0.609" FontWeight="Bold"  KeyDown="AddYarnBobbinAmountToPrintTextBox_OnKeyDownHandler"/>
         <TextBox x:Name="AddYarnBobbinInPackageCountToPrintTextBox" Style="{StaticResource MyTextBox}" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Height="30" Margin="630,196,0,0" VerticalContentAlignment="Center" ToolTip="liczba szpulek w paczce" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.292,0.609" FontWeight="Bold" IsTabStop="False"/>
-        <Button x:Name="AddYarnToPrintListButton" Style="{StaticResource MyButton}" Content="DODAJ DO LISTY" Margin="730,277,50,168" Width="120" Height="80" Click="AddYarnToPrintListButton_Click"/>
-        <Button x:Name="AddYarnToPrintClearListButton" Style="{StaticResource MyButton}" Content="WYCZYŚĆ LISTĘ" Margin="472,277,308,168" Width="120" Height="80" Click="AddYarnToPrintClearListButton_Click"/>
-        <Button x:Name="GenerateAndSavePdfToPrintButton" Style="{StaticResource MyButton}" Content="GENERUJ PDF"  Margin="730,412,50,33"  Width="120" Height="80" Click="GenerateAndSavePdfToPrintButton_Click"/>
-        <Button x:Name="BackToMainMenuButton" Style="{StaticResource MyButton}" Content="WRÓC DO GŁÓWNEGO PANELU" Height="80" Margin="163,412,617,33" Width="120" Click="BackToMainMenuButton_Click" />
-        <Button x:Name="YarnListExitProgramButton" Style="{StaticResource MyButton}" Content="ZAKOŃCZ PROGRAM" Height="80" Margin="22,412,758,33" Width="120" Click="YarnListExitProgramButton_Click" />
+        <Button x:Name="AddYarnToPrintListButton" Style="{StaticResource MyButton}" Margin="730,277,50,168" Width="120" Height="80" Click="AddYarnToPrintListButton_Click">
+            <TextBlock Style="{StaticResource TextBlockWrapped}">
+                DODAJ DO LISTY
+            </TextBlock>
+        </Button>
+        <Button x:Name="AddYarnToPrintClearListButton" Style="{StaticResource MyButton}" Margin="472,277,308,168" Width="120" Height="80" Click="AddYarnToPrintClearListButton_Click">
+            <TextBlock Style="{StaticResource TextBlockWrapped}">
+                WYCZYŚĆ LISTĘ
+            </TextBlock>
+        </Button>
+        <Button x:Name="GenerateAndSavePdfToPrintButton" Style="{StaticResource MyButton}" Margin="730,412,50,33"  Width="120" Height="80" Click="GenerateAndSavePdfToPrintButton_Click">
+            <TextBlock Style="{StaticResource TextBlockWrapped}">
+                GENERUJ PDF
+            </TextBlock>
+        </Button>
+        <Button x:Name="BackToMainMenuButton"  Style="{StaticResource MyButton}" Height="80" Margin="163,412,617,33" Width="120" Click="BackToMainMenuButton_Click" >
+            <TextBlock Style="{StaticResource TextBlockWrapped}">
+                WRÓC DO GŁÓWNEGO PANELU
+            </TextBlock>
+        </Button>
+        <Button x:Name="YarnListExitProgramButton" Style="{StaticResource MyButtonRed}" Height="80" Margin="22,412,758,33" Width="120" Click="YarnListExitProgramButton_Click" >
+            <TextBlock Style="{StaticResource TextBlockWrapped}">
+                ZAKOŃCZ PROGRAM
+            </TextBlock>
+        </Button>
         <DataGrid x:Name="YarnsToPrintListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="316" Margin="35,41,455,0" VerticalAlignment="Top" Width="410" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="220" FontSize="14" Header="KOLOR" Binding="{Binding YarnColor}" >

@@ -39,56 +39,39 @@
             </Setter>
         </Style>
 
+              
+
         <!-- Standard button  -->
 
         <Style x:Key="MyButton" TargetType="Button">
+            
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Border BorderThickness="1" 
-                                    
+                            <Border BorderThickness="2" 
                                     CornerRadius="2"
-                                    
-                                    x:Name="ButtonBorder"
-                                    Background="White"
+                                     x:Name="ButtonBorder"
+                                    Background="Beige"
                                     BorderBrush="SteelBlue"
                                     
-                                />
-
+                                 />
                             <ContentPresenter 
-                                    
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
-                                TextBlock.Foreground="#FF08599C"
-                                TextBlock.FontSize="12"
-                                TextBlock.FontWeight="Bold"
-                                TextBlock.TextAlignment="Center"
+                               
+                                   >
                                 
-
-                                
-                                       >
-                                <ContentPresenter.Resources>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="TextWrapping" Value="Wrap"/>
-                                        <Setter Property="Padding" Value="5"/>
-                                    </Style>
-                                </ContentPresenter.Resources>
                             </ContentPresenter>
-
-
-
-
-
-
-
                         </Grid>
-                        
+
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="ButtonBorder" Property="Background" Value="WhiteSmoke" />
-                                <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="2" />
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                
+                                <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="3" />
                                 <Setter Property="Cursor" Value="Hand" />
+                                <Setter Property="FontSize" Value="13"/>
+
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="Gray"/>
@@ -96,11 +79,66 @@
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                    
-                    
                 </Setter.Value>
             </Setter>
- 
+            <Setter Property="Foreground" Value="#FF08599C"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+
+        </Style>
+
+        <!-- textblock wrapped and padded  -->
+        
+        <Style x:Key="TextBlockWrapped" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        
+        <!-- Red button  -->
+
+        <Style x:Key="MyButtonRed" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border BorderThickness="2" 
+                                    CornerRadius="2"
+                                     x:Name="ButtonBorder"
+                                    Background="Beige"
+                                    BorderBrush="SteelBlue"
+                                 />
+                            <ContentPresenter 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                
+                                   >
+                                
+                            </ContentPresenter>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                
+                                <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="3" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Setter Property="FontSize" Value="13"/>
+
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="Gray"/>
+                                <Setter Property="Button.Foreground" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Crimson"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+
         </Style>
 
         <!-- Flat ComboBox -->
