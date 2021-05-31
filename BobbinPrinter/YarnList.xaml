@@ -69,7 +69,7 @@
                         <ColumnDefinition Width="406*"/>
                     </Grid.ColumnDefinitions>
                     <GroupBox x:Name="groupBox2" Header="LISTA PRZĘDZ" HorizontalAlignment="Center" Height="436" Margin="25,10,21,0" VerticalAlignment="Top" Width="928" FontSize="14" FontWeight="Bold" Foreground="#FF08599C" BorderBrush="SteelBlue" Grid.ColumnSpan="3">
-                        <DataGrid x:Name="YarnsListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="386" Margin="71,10,79,0" VerticalAlignment="Top" Width="766" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True" FontSize="12">
+                        <DataGrid x:Name="YarnsListView" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="277" Margin="71,10,79,0" VerticalAlignment="Top" Width="766" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" IsReadOnly="True" FontSize="12">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="228" FontSize="12" Header="KOLOR" Binding="{Binding YarnColor}" >
                                     <DataGridTextColumn.HeaderStyle>
@@ -144,7 +144,15 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </GroupBox>
-                    
+
+                    <ComboBox Width="200" x:Name="comboBox" Margin="185,354,427,77" ItemsSource="{Binding YarnsModel}" DisplayMemberPath="YarnColor" IsEditable="True" Grid.Column="2" >
+                        <ComboBox.Style>
+                            <Style>
+                                <EventSetter Event="TextBox.TextChanged" Handler="TextBox_TextChanged" />
+                            </Style>
+                        </ComboBox.Style>
+                    </ComboBox>
+
                 </Grid>
 
             </TabItem>
@@ -227,7 +235,7 @@
 
             </TabItem>
 
-            
+
         </TabControl>
     </Grid>
 </Window>

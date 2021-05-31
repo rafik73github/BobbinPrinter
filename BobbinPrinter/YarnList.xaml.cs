@@ -2,6 +2,9 @@
 using BobbinPrinter.SQL;
 using BobbinPrinter.Models;
 using System;
+using System.Collections.Generic;
+using System.Windows.Controls;
+using System.Linq;
 
 namespace BobbinPrinter
 {
@@ -14,6 +17,7 @@ namespace BobbinPrinter
         private string addMakerTextBoxText;
         private string addTypeTextBoxText;
         private string addSizeTextBoxText;
+        List<YarnsModel> test = new SQLYarns().GetAllYarns();
         public YarnList()
         {
             InitializeComponent();
@@ -21,12 +25,21 @@ namespace BobbinPrinter
             SelectYarnMakerComboBox.ItemsSource = new SQLYarnmakers().GetAllYarnmakers();
             SelectYarnTypeComboBox.ItemsSource = new SQLYarntypes().GetAllYarntypes();
             SelectYarnSizeComboBox.ItemsSource = new SQLYarnsizes().GetAllYarnsizes();
+            
+            comboBox.ItemsSource = test;
             YarnsListView.ItemsSource = new SQLYarns().GetAllYarns();
             
 
         }
 
-       
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            comboBox.ItemsSource = from item in test
+                               where item.YarnColor.ToLower().Contains(comboBox.Text.ToLower())
+                               select item;
+            comboBox.IsDropDownOpen = true;
+        }
 
         private void AddMakerButton_Click(object sender, RoutedEventArgs e)
         {

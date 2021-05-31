@@ -110,6 +110,33 @@ namespace BobbinPrinter.SQL
 
         }
 
+        public IEnumerable<YarnmakersModel> GetAllYarnmakers1()
+        {
+            List<YarnmakersModel> result = new List<YarnmakersModel>();
+
+            command.CommandText = "SELECT" +
+                " *" +
+                " FROM yarnmakers" +
+                " ORDER BY yarnmaker_name ASC";
+
+
+            SQLiteDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                result.Add(new YarnmakersModel(Convert.ToInt32(reader["yarnmaker_id"]),
+                    reader["yarnmaker_name"].ToString(),
+                    Convert.ToBoolean(reader["yarnmaker_archived"])));
+
+
+            }
+            reader.Close();
+
+            return result;
+
+        }
+
     }
 
     
