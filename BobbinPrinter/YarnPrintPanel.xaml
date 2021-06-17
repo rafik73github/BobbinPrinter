@@ -14,12 +14,22 @@
 
         </GroupBox>
         
-        <ComboBox x:Name="SelectYarnToPrintComboBox" Style="{StaticResource ComboBoxFlatStyle}" HorizontalAlignment="Center" Height="30" Margin="630,41,50,0" VerticalAlignment="Top" Width="220"  VerticalContentAlignment="Center" ToolTip="wybierz przędzę do wydruku" FontWeight="Bold" SelectionChanged="SelectYarnToPrintComboBox_SelectionChanged">
+        <ComboBox x:Name="SelectYarnToPrintComboBox" 
+                  Style="{StaticResource ComboBoxFlatStyle}" 
+                  HorizontalAlignment="Center" 
+                  Height="30" Width="220" Margin="630,41,50,0" 
+                  VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                  ToolTip="wybierz przędzę do wydruku" 
+                  FontWeight="Bold" 
+                  SelectionChanged="SelectYarnToPrintComboBox_SelectionChanged"
+                  
+                  >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
-                          <Run Text="{Binding YarnColor}"/>
+                        <Run Text="{Binding YarnColor}"/>
                     </TextBlock>
+
                 </DataTemplate>
             </ComboBox.ItemTemplate>
 
@@ -49,6 +59,11 @@
         <Button x:Name="BackToMainMenuButton"  Style="{StaticResource MyButton}" Height="80" Margin="163,412,617,33" Width="120" Click="BackToMainMenuButton_Click" >
             <TextBlock Style="{StaticResource TextBlockWrapped}">
                 WRÓC DO GŁÓWNEGO PANELU
+            </TextBlock>
+        </Button>
+        <Button x:Name="OpenPrintFolderButton"  Style="{StaticResource MyButton}" Height="80" Margin="472,412,308,33" Width="120" Click="OpenPrintFolderButton_Click" >
+            <TextBlock Style="{StaticResource TextBlockWrapped}">
+                OTWÓRZ FOLDER Z PDF
             </TextBlock>
         </Button>
         <Button x:Name="YarnListExitProgramButton" Style="{StaticResource MyButtonRed}" Height="80" Margin="22,412,758,33" Width="120" Click="YarnListExitProgramButton_Click" >

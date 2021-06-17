@@ -145,12 +145,8 @@
                         </DataGrid>
                     </GroupBox>
 
-                    <ComboBox Width="200" x:Name="comboBox" Margin="185,354,427,77" ItemsSource="{Binding YarnsModel}" DisplayMemberPath="YarnColor" IsEditable="True" Grid.Column="2" >
-                        <ComboBox.Style>
-                            <Style>
-                                <EventSetter Event="TextBox.TextChanged" Handler="TextBox_TextChanged" />
-                            </Style>
-                        </ComboBox.Style>
+                    <ComboBox Width="200" x:Name="comboBox" PreviewTextInput="MyComboBox_PreviewTextInput" Margin="185,354,427,77" DisplayMemberPath="YarnColor" IsEditable="True" Grid.Column="2" >
+                        
                     </ComboBox>
 
                 </Grid>

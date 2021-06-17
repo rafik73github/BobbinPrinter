@@ -17,14 +17,14 @@ namespace BobbinPrinter
         private void AddPrintButton_Click(object sender, RoutedEventArgs e)
         {
             YarnPrintPanel yPP = new YarnPrintPanel();
-            this.Hide();
+            Hide();
             yPP.Show();
         }
 
         private void YarnListButton_Click(object sender, RoutedEventArgs e)
         {
             YarnList yL = new YarnList();
-            this.Hide();
+            Hide();
             yL.Show();
         }
 

@@ -10,16 +10,16 @@
 
         public YarnsizesModel(int yarnsizeId, string yarnsizeName, bool yarnsizeArchived)
         {
-            this.YarnsizeId = yarnsizeId;
-            this.YarnsizeName = yarnsizeName;
-            this.YarnsizeArchived = yarnsizeArchived;
+            YarnsizeId = yarnsizeId;
+            YarnsizeName = yarnsizeName;
+            YarnsizeArchived = yarnsizeArchived;
             
         }
 
         public YarnsizesModel(string yarnsizeName, bool yarnsizeArchived)
         {
-            this.YarnsizeName = yarnsizeName;
-            this.YarnsizeArchived = yarnsizeArchived;
+            YarnsizeName = yarnsizeName;
+            YarnsizeArchived = yarnsizeArchived;
 
         }
     }

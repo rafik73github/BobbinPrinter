@@ -1,7 +1,5 @@
 ﻿using System.Windows;
-using BobbinPrinter.SQL;
 using BobbinPrinter.Models;
-using BobbinPrinter.Tools;
 using iText.Kernel.Colors;
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
@@ -11,7 +9,6 @@ using iText.Layout.Element;
 using iText.Layout.Properties;
 using TextAlignment = iText.Layout.Properties.TextAlignment;
 using System.Collections.Generic;
-using System;
 using iText.IO.Font;
 using iText.Kernel.Font;
 using System.Diagnostics;

@@ -5,6 +5,9 @@ using BobbinPrinter.Tools;
 using System.Collections.Generic;
 using System;
 using System.Windows.Input;
+using System.Windows.Controls;
+using System.Linq;
+using System.Diagnostics;
 
 namespace BobbinPrinter
 {
@@ -13,55 +16,62 @@ namespace BobbinPrinter
     /// </summary>
     public partial class YarnPrintPanel : Window
     {
-        List<YarnPrintListModel> yarnPrintListModelList = new List<YarnPrintListModel>();
-        
+        readonly List<YarnPrintListModel> yarnPrintListModelList = new List<YarnPrintListModel>();
+        readonly List<YarnsModel> test = new SQLYarns().GetAllYarns();
         public YarnPrintPanel()
         {
             InitializeComponent();
 
-            SelectYarnToPrintComboBox.ItemsSource = new SQLYarns().GetAllYarns();
+            //SelectYarnToPrintComboBox.ItemsSource = new SQLYarns().GetAllYarns();
+            SelectYarnToPrintComboBox.ItemsSource = test;
             YarnsToPrintListView.ItemsSource = yarnPrintListModelList;
             AddYarnBobbinAmountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatinTextBox;
             AddYarnBobbinInPackageCountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatinTextBox;
 
-            SelectYarnToPrintComboBox.Focus();
+            //SelectYarnToPrintComboBox.Focus();
 
 
         }
 
-        
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            comboBox.ItemsSource = from item in test
+                                   where item.YarnColor.ToLower().Contains(comboBox.Text.ToLower())
+                                   select item;
+            comboBox.IsDropDownOpen = true;
+        }
 
         private void AddYarnToPrintListButton_Click(object sender, RoutedEventArgs e)
         {
-            
             string addYarnLotToPrintTextBoxString = AddYarnLotToPrintTextBox.Text.Trim().ToUpper();
-            
-            YarnsModel yarnsModel = SelectYarnToPrintComboBox.SelectedItem as YarnsModel;
 
-            if (yarnsModel == null)
+
+            if (!(SelectYarnToPrintComboBox.SelectedItem is YarnsModel yarnsModel))
             {
-                MessageBox.Show("WYBIERZ KOLOR Z LISTY");
+                MessageBox.Show(Texts.GET_COLOR_FROM_LIST);
             }
             else if (addYarnLotToPrintTextBoxString.Equals(""))
             {
-                MessageBox.Show("WPISZ LOT PRZĘDZY");
+                MessageBox.Show(Texts.ENTRY_YARN_LOT);
             }
             else if (AddYarnBobbinInPackageCountToPrintTextBox.Text.Trim().Equals(""))
             {
-                MessageBox.Show("WPISZ LICZBĘ SZPULEK W PACZCE");
+                MessageBox.Show(Texts.ENTRY_NUMBER_OF_BOBBINS_IN_PACK);
             }
             else if (AddYarnBobbinAmountToPrintTextBox.Text.Trim().Equals(""))
             {
-                MessageBox.Show("WPISZ LICZBĘ PACZEK");
+                MessageBox.Show(Texts.ENTRY_NUMBER_OF_PACKS);
             }
             else if (AddYarnBobbinAmountToPrintTextBox.Text.Trim().Equals("0"))
             {
-                MessageBox.Show("WPISZ LICZBĘ SZPULEK WIĘKSZĄ OD ZERA");
+                MessageBox.Show(Texts.ENTRY_NUMBER_OF_BOBBINS_BIGGEST_THAN_ZERO);
             }
             else
             {
                 int addYarnBobbinAmountToPrintTextBoxInt = Convert.ToInt32(AddYarnBobbinAmountToPrintTextBox.Text.Trim());
-                addYarnBobbinAmountToPrintTextBoxInt = addYarnBobbinAmountToPrintTextBoxInt * Convert.ToInt32(AddYarnBobbinInPackageCountToPrintTextBox.Text);
+                //addYarnBobbinAmountToPrintTextBoxInt = addYarnBobbinAmountToPrintTextBoxInt * Convert.ToInt32(AddYarnBobbinInPackageCountToPrintTextBox.Text);
+                addYarnBobbinAmountToPrintTextBoxInt *= Convert.ToInt32(AddYarnBobbinInPackageCountToPrintTextBox.Text);
                 yarnPrintListModelList.Add(new YarnPrintListModel(yarnsModel.YarnColor,
                     addYarnLotToPrintTextBoxString,
                     Convert.ToInt32(AddYarnBobbinInPackageCountToPrintTextBox.Text),
@@ -93,7 +103,7 @@ namespace BobbinPrinter
         {
             if (yarnPrintListModelList.Count == 0)
             {
-                MessageBox.Show("LISTA WYDRUKU JEST PUSTA !");
+                MessageBox.Show(Texts.PRINT_LIST_IS_EMPTY);
             }
             else
             {
@@ -109,9 +119,28 @@ namespace BobbinPrinter
 
         private void BackToMainMenuButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mW = new MainWindow();
-            this.Hide();
-            mW.Show();
+            try
+            {
+                MainWindow mW = new MainWindow();
+                Hide();
+                mW.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("COŚ POSZŁO NIE TAK: " + ex.Message, "BŁĄD APLIKACJI", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void OpenPrintFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("PRINTS");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("COŚ POSZŁO NIE TAK: " + ex.Message, "BŁĄD APLIKACJI", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void YarnListExitProgramButton_Click(object sender, RoutedEventArgs e)
@@ -119,10 +148,9 @@ namespace BobbinPrinter
             Application.Current.Shutdown();
         }
 
-        private void SelectYarnToPrintComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void SelectYarnToPrintComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            YarnsModel yarnsModel = SelectYarnToPrintComboBox.SelectedItem as YarnsModel;
-            if (yarnsModel != null)
+            if (SelectYarnToPrintComboBox.SelectedItem is YarnsModel yarnsModel)
             {
                 AddYarnBobbinInPackageCountToPrintTextBox.Text = yarnsModel.YarnBobbinInPackageCount.ToString();
             }

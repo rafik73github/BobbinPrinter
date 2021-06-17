@@ -9,15 +9,15 @@
 
         public YarnmakersModel(string yarnmakerName, bool yarnmakerArchived)
         {
-            this.YarnmakerName = yarnmakerName;
-            this.YarnmakerArchived = yarnmakerArchived;
+            YarnmakerName = yarnmakerName;
+            YarnmakerArchived = yarnmakerArchived;
         }
 
         public YarnmakersModel(int yarnmakerId, string yarnmakerName, bool yarnmakerArchived)
         {
-            this.YarnmakerId = yarnmakerId;
-            this.YarnmakerName = yarnmakerName;
-            this.YarnmakerArchived = yarnmakerArchived;
+            YarnmakerId = yarnmakerId;
+            YarnmakerName = yarnmakerName;
+            YarnmakerArchived = yarnmakerArchived;
         }
 
     }

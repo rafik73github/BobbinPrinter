@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Linq;
+using BobbinPrinter.Tools;
+using System.Windows.Input;
 
 namespace BobbinPrinter
 {
@@ -13,11 +15,10 @@ namespace BobbinPrinter
     /// </summary>
     public partial class YarnList : Window
     {
-        XMLTools xmlTools = new XMLTools();
         private string addMakerTextBoxText;
         private string addTypeTextBoxText;
         private string addSizeTextBoxText;
-        List<YarnsModel> test = new SQLYarns().GetAllYarns();
+        readonly List<YarnsModel> test = new SQLYarns().GetAllYarns();
         public YarnList()
         {
             InitializeComponent();
@@ -36,9 +37,23 @@ namespace BobbinPrinter
         {
             var comboBox = sender as ComboBox;
             comboBox.ItemsSource = from item in test
-                               where item.YarnColor.ToLower().Contains(comboBox.Text.ToLower())
+                               where item.YarnColor.ToLower().Trim().Contains(comboBox.Text.ToLower().Trim())
                                select item;
             comboBox.IsDropDownOpen = true;
+        }
+
+        private void MyComboBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            
+            foreach (YarnsModel i in comboBox.Items)
+            {
+                if (i.ToString().ToUpper().Contains(e.Text.ToUpper()))
+                {
+                    comboBox.SelectedItem = i;
+                    break;
+                }
+            }
+            e.Handled = true;
         }
 
         private void AddMakerButton_Click(object sender, RoutedEventArgs e)
@@ -46,20 +61,20 @@ namespace BobbinPrinter
             addMakerTextBoxText = AddMakerTextBox.Text;
             if(addMakerTextBoxText.Trim().Equals(""))
             {
-                MessageBox.Show("NIE WPISAŁEŚ\n PRODUCENTA PRZĘDZY","BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("NIE WPISAŁEŚ\n PRODUCENTA PRZĘDZY",Texts.ENTRY_RECORD_ERROR, MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
                 if(new SQLYarnmakers().IsYarnmakerExist(addMakerTextBoxText))
                 {
                     AddMakerTextBox.Text = "";
-                    MessageBox.Show("TAKI PRODUCENT PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("TAKI PRODUCENT PRZĘDZY\n JUŻ ISTNIEJE!", Texts.ENTRY_RECORD_ERROR, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
                 else
                 {
                     new SQLYarnmakers().AddYarnmaker(new YarnmakersModel(addMakerTextBoxText.ToUpper(), false));
                     AddMakerTextBox.Text = "";
-                    MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Texts.ADDED, "", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     SelectYarnMakerComboBox.ItemsSource = null;
                     SelectYarnMakerComboBox.ItemsSource = new SQLYarnmakers().GetAllYarnmakers();
@@ -73,20 +88,20 @@ namespace BobbinPrinter
             addTypeTextBoxText = AddTypeTextBox.Text;
             if (addTypeTextBoxText.Trim().Equals(""))
             {
-                MessageBox.Show("NIE WPISAŁEŚ\n TYPU PRZĘDZY", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("NIE WPISAŁEŚ\n TYPU PRZĘDZY", Texts.ENTRY_RECORD_ERROR, MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
                 if (new SQLYarntypes().IsYarntypeExist(addTypeTextBoxText))
                 {
                     AddTypeTextBox.Text = "";
-                    MessageBox.Show("TAKI TYP PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("TAKI TYP PRZĘDZY\n JUŻ ISTNIEJE!", Texts.ENTRY_RECORD_ERROR, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
                 else
                 {
                     new SQLYarntypes().AddYarntype(new YarntypesModel(addTypeTextBoxText.ToUpper(), false));
                     AddTypeTextBox.Text = "";
-                    MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Texts.ADDED, "", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     SelectYarnTypeComboBox.ItemsSource = null;
                     SelectYarnTypeComboBox.ItemsSource = new SQLYarntypes().GetAllYarntypes();
@@ -99,20 +114,20 @@ namespace BobbinPrinter
             addSizeTextBoxText = AddSizeTextBox.Text;
             if (addSizeTextBoxText.Trim().Equals(""))
             {
-                MessageBox.Show("NIE WPISAŁEŚ\n GRUBOŚCI PRZĘDZY", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("NIE WPISAŁEŚ\n GRUBOŚCI PRZĘDZY", Texts.ENTRY_RECORD_ERROR, MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
                 if (new SQLYarnsizes().IsYarnsizeExist(addSizeTextBoxText))
                 {
                     AddSizeTextBox.Text = "";
-                    MessageBox.Show("TAKA GRUBOŚĆ PRZĘDZY\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("TAKA GRUBOŚĆ PRZĘDZY\n JUŻ ISTNIEJE!", Texts.ENTRY_RECORD_ERROR, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
                 else
                 {
                     new SQLYarnsizes().AddYarnsize(new YarnsizesModel(addSizeTextBoxText.ToUpper(), false));
                     AddSizeTextBox.Text = "";
-                    MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Texts.ADDED, "", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     SelectYarnSizeComboBox.ItemsSource = null;
                     SelectYarnSizeComboBox.ItemsSource = new SQLYarnsizes().GetAllYarnsizes();
@@ -136,13 +151,13 @@ namespace BobbinPrinter
                 || addColorNameTextBoxText.Equals("")
                 || AddBobbinInPackageTextBox.Text.Trim().Equals(""))
             {
-                MessageBox.Show("UZUPEŁNIJ WSZYSTKIE DANE", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("UZUPEŁNIJ WSZYSTKIE DANE", Texts.ENTRY_RECORD_ERROR, MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
             {
                 if (new SQLYarns().IsYarnExist(yarnmakersModel.YarnmakerId, yarntypesModel.YarntypeId,yarnsizesModel.YarnsizeId,addColorNameTextBoxText, Convert.ToInt32(AddBobbinInPackageTextBox.Text)))
                 {
-                    MessageBox.Show("TAKA PRZĘDZA\n JUŻ ISTNIEJE!", "BŁAD DODAWANIA WPISU", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("TAKA PRZĘDZA\n JUŻ ISTNIEJE!", Texts.ENTRY_RECORD_ERROR, MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     AddColorNameTextBox.Text = "";
                     
 
@@ -155,7 +170,7 @@ namespace BobbinPrinter
                     YarnsListView.ItemsSource = null;
                     YarnsListView.ItemsSource = new SQLYarns().GetAllYarns();
 
-                    MessageBox.Show("DODANO", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Texts.ADDED, "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             
@@ -165,7 +180,7 @@ namespace BobbinPrinter
         private void BackToMainMenuButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mW = new MainWindow();
-            this.Hide();
+            Hide();
             mW.Show();
         }
 

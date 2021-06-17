@@ -22,36 +22,36 @@
 
         public YarnsModel (int yarnId, int yarnMaker, string yarnMakerString, int yarnType, string yarnTypeString, int yarnSize, string yarnSizeString, string yarnColor, int yarnBobbinInPackageCount, bool yarnArchived)
         {
-            this.YarnId = yarnId;
-            this.YarnMaker = yarnMaker;
-            this.YarnMakerString = yarnMakerString;
-            this.YarnType = yarnType;
-            this.YarnTypeString = yarnTypeString;
-            this.YarnSize = yarnSize;
-            this.YarnSizeString = yarnSizeString;
-            this.YarnColor = yarnColor;
-            this.YarnBobbinInPackageCount = yarnBobbinInPackageCount;
-            this.YarnArchived = yarnArchived;
+            YarnId = yarnId;
+            YarnMaker = yarnMaker;
+            YarnMakerString = yarnMakerString;
+            YarnType = yarnType;
+            YarnTypeString = yarnTypeString;
+            YarnSize = yarnSize;
+            YarnSizeString = yarnSizeString;
+            YarnColor = yarnColor;
+            YarnBobbinInPackageCount = yarnBobbinInPackageCount;
+            YarnArchived = yarnArchived;
         }
 
         public YarnsModel(int yarnId, int yarnMaker, int yarnType, int yarnSize, string yarnColor, bool yarnArchived)
         {
-            this.YarnId = yarnId;
-            this.YarnMaker = yarnMaker;
-            this.YarnType = yarnType;
-            this.YarnSize = yarnSize;
-            this.YarnColor = yarnColor;
-            this.YarnArchived = yarnArchived;
+            YarnId = yarnId;
+            YarnMaker = yarnMaker;
+            YarnType = yarnType;
+            YarnSize = yarnSize;
+            YarnColor = yarnColor;
+            YarnArchived = yarnArchived;
         }
 
         public YarnsModel(int yarnMaker, int yarnType, int yarnSize, string yarnColor, int yarnBobbinInPackageCount, bool yarnArchived)
         {
-            this.YarnMaker = yarnMaker;
-            this.YarnType = yarnType;
-            this.YarnSize = yarnSize;
-            this.YarnColor = yarnColor;
-            this.YarnBobbinInPackageCount = yarnBobbinInPackageCount;
-            this.YarnArchived = yarnArchived;
+            YarnMaker = yarnMaker;
+            YarnType = yarnType;
+            YarnSize = yarnSize;
+            YarnColor = yarnColor;
+            YarnBobbinInPackageCount = yarnBobbinInPackageCount;
+            YarnArchived = yarnArchived;
         }
 
     }

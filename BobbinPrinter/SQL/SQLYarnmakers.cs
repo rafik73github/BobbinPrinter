@@ -7,9 +7,8 @@ namespace BobbinPrinter.SQL
 {
     class SQLYarnmakers
     {
-
-        SQLiteConnection sqlConnection;
-        SQLiteCommand command;
+        readonly SQLiteConnection sqlConnection;
+        readonly SQLiteCommand command;
 
         public SQLYarnmakers()
         {
