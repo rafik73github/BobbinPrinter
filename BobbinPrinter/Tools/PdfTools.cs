@@ -47,7 +47,7 @@ namespace BobbinPrinter.Tools
                     {
                         Cell cell = new Cell(1, 1)
                               .SetBackgroundColor(ColorConstants.WHITE)
-                              .SetBorder(new DottedBorder(ColorConstants.LIGHT_GRAY, 1))
+                              .SetBorder(new DottedBorder(ColorConstants.WHITE, 1))
                               .SetWidth(200)
                               .SetHeight(31);
 
