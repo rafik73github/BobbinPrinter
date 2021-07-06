@@ -22,13 +22,20 @@ namespace BobbinPrinter
             if (!string.IsNullOrEmpty(dbPath) && !Directory.Exists(dbPath))
                 Directory.CreateDirectory(dbPath);
 
-            OpenMainWindow();
+            //OpenMainWindow();
+            OpenYarnPrintPanel();
         }
 
         private void OpenMainWindow()
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+        }
+
+        private void OpenYarnPrintPanel()
+        {
+            YarnPrintPanel yarnPrintPanel = new YarnPrintPanel();
+            yarnPrintPanel.Show();
         }
 
     }

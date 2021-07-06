@@ -46,7 +46,7 @@
                 DODAJ DO LISTY
             </TextBlock>
         </Button>
-        <Button x:Name="AddYarnToPrintClearListButton" Style="{StaticResource MyButton}" Margin="472,277,308,168" Width="120" Height="80" Click="AddYarnToPrintClearListButton_Click">
+        <Button x:Name="AddYarnToPrintClearListButton" Style="{StaticResource MyButtonRed}" Margin="472,277,308,168" Width="120" Height="80" Click="AddYarnToPrintClearListButton_Click">
             <TextBlock Style="{StaticResource TextBlockWrapped}">
                 WYCZYŚĆ LISTĘ
             </TextBlock>
@@ -56,9 +56,9 @@
                 GENERUJ PDF
             </TextBlock>
         </Button>
-        <Button x:Name="BackToMainMenuButton"  Style="{StaticResource MyButton}" Height="80" Margin="163,412,617,33" Width="120" Click="BackToMainMenuButton_Click" >
+        <Button x:Name="OpenSettingsButton"  Style="{StaticResource MyButton}" Height="80" Margin="163,412,617,33" Width="120" Click="OpenSettingsButton_Click" >
             <TextBlock Style="{StaticResource TextBlockWrapped}">
-                WRÓC DO GŁÓWNEGO PANELU
+                USTAWIENIA
             </TextBlock>
         </Button>
         <Button x:Name="OpenPrintFolderButton"  Style="{StaticResource MyButton}" Height="80" Margin="472,412,308,33" Width="120" Click="OpenPrintFolderButton_Click" >

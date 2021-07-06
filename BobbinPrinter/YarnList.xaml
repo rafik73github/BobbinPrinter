@@ -13,9 +13,9 @@
 
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="BackToMainMenuButton"  Style="{StaticResource MyButton}" Height="80" Margin="211,498,669,31" Width="120" Click="BackToMainMenuButton_Click" >
+        <Button x:Name="BackToPrintButton"  Style="{StaticResource MyButton}" Height="80" Margin="211,498,669,31" Width="120" Click="BackToPrintButton_Click" >
             <TextBlock Style="{StaticResource TextBlockWrapped}">
-                WRÓC DO GŁÓWNEGO PANELU
+                WRÓC DO DRUKOWANIA ETYKIET
             </TextBlock>
         </Button>
         <Button x:Name="YarnListExitProgramButton" Style="{StaticResource MyButtonRed}" Height="80" Margin="51,498,829,31" Width="120" Click="YarnListExitProgramButton_Click" >

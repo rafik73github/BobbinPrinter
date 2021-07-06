@@ -25,8 +25,8 @@ namespace BobbinPrinter
             //SelectYarnToPrintComboBox.ItemsSource = new SQLYarns().GetAllYarns();
             SelectYarnToPrintComboBox.ItemsSource = test;
             YarnsToPrintListView.ItemsSource = yarnPrintListModelList;
-            AddYarnBobbinAmountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatinTextBox;
-            AddYarnBobbinInPackageCountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatinTextBox;
+            AddYarnBobbinAmountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatInTextBox;
+            AddYarnBobbinInPackageCountToPrintTextBox.PreviewTextInput += Validate.OnlyNumberValidatInTextBox;
 
             //SelectYarnToPrintComboBox.Focus();
 
@@ -117,13 +117,13 @@ namespace BobbinPrinter
             }
         }
 
-        private void BackToMainMenuButton_Click(object sender, RoutedEventArgs e)
+        private void OpenSettingsButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                MainWindow mW = new MainWindow();
+                YarnList yarnListWindow = new YarnList();
                 Hide();
-                mW.Show();
+                yarnListWindow.Show();
             }
             catch (Exception ex)
             {

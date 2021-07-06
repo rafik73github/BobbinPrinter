@@ -10,7 +10,7 @@ namespace BobbinPrinter.Tools
             e.Handled = e.Key == Key.Space;
         }
 
-        public static void NumberValidatinTextBox(object sender, TextCompositionEventArgs e)
+        public static void NumberValidatInTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"[^0-9,]+");
 
@@ -18,7 +18,7 @@ namespace BobbinPrinter.Tools
 
         }
 
-        public static void OnlyNumberValidatinTextBox(object sender, TextCompositionEventArgs e)
+        public static void OnlyNumberValidatInTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"[^0-9]+");
 
@@ -26,7 +26,7 @@ namespace BobbinPrinter.Tools
 
         }
 
-        public static void LetterValidatinTextBox(object sender, TextCompositionEventArgs e)
+        public static void LetterValidatInTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"[^a-z-]+");
 

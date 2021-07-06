@@ -177,11 +177,11 @@ namespace BobbinPrinter
         }
 
         
-        private void BackToMainMenuButton_Click(object sender, RoutedEventArgs e)
+        private void BackToPrintButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mW = new MainWindow();
+            YarnPrintPanel yarnPrintPanelWindow = new YarnPrintPanel();
             Hide();
-            mW.Show();
+            yarnPrintPanelWindow.Show();
         }
 
         private void YarnListExitProgramButton_Click(object sender, RoutedEventArgs e)
